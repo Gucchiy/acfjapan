@@ -114,11 +114,11 @@ if($_SERVER["HTTP_HOST"]==="acfjapan.com"){
 	Configure::write('fbapi_appid', '184646768373007');
 	Configure::write('fbapi_secret', '5a1ccdca02294c0b26ca1615b56dda83');
 
-}else if($_SERVER["HTTP_HOST"]==="staging.acfjapan.com"){
+}else if($_SERVER["HTTP_HOST"]==="acfjapan1.sakura.ne.jp"){
 
 	Configure::write('database', 'staging');
-	Configure::write('fbapi_appid', '184646768373007');
-	Configure::write('fbapi_secret', '5a1ccdca02294c0b26ca1615b56dda83');
+	Configure::write('fbapi_appid', '500302520048939');
+	Configure::write('fbapi_secret', '7985cd05a7175cd51fcbe23bd0420607');
 
 }else{
 	

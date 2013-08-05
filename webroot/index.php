@@ -71,7 +71,8 @@ if (!defined('APP_DIR')) {
 
 }else{
 
-	define('CAKE_CORE_INCLUDE_PATH', '/export/sd209/www/jp/r/e/gmoserver/3/7/sd0396137/cake.acfjapan.com/cakephp-2.3.6/lib');
+	// define('CAKE_CORE_INCLUDE_PATH', '/export/sd209/www/jp/r/e/gmoserver/3/7/sd0396137/cake.acfjapan.com/cakephp-2.3.6/lib');
+	define('CAKE_CORE_INCLUDE_PATH', '/home/acfjapan1/cakephp-2.3.6/lib');
 }
 
 /**
