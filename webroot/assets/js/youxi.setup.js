@@ -231,7 +231,27 @@
 					$container.isotope({
 						masonry: {
 							columnWidth: $container.width() / 12
+						},
+						// idea-tech: ソート事前準備 
+						getSortData: {
+							title: function( $elem ){
+								$title = $elem.find('.item-title').find('a').text(); 
+								// $title = $link_html.find('a').text();
+								return $title;
+							},
+							createdate: function($elem){
+								$craetedate = $elem.find('.hidden_create_date').text();
+								alet($createdate);
+								return $createdate;
+							},
+							wantamount: function($elem){
+								$craetedate = $elem.find('.hidden_want_amount').text();
+								return parseInt($craetedate);
+								
+							}
+
 						}
+
 					});
 
 					$( window ).on( 'smartresize.portfolio', function(){
@@ -242,6 +262,7 @@
 						});
 					});
 
+					
 					$filter.on( 'click', 'a', function( e ) {
 						$container.isotope({
 							filter: $( this ).data( 'filter' )
@@ -253,9 +274,31 @@
 
 						e.preventDefault();
 					});
+					
 
 					$filter.find( 'li a[data-filter="*"]' ).parent().addClass( 'active' );
 					$filterActive.text( $filter.find( 'li a[data-filter="*"]' ).text() );
+
+					// idea-tech: ソートのクリック時処理
+					$('div.portfolio-filter a#sort').click(function(){
+						// alert('test');
+						$container.isotope({sortBy:'title'});
+					});
+					$('div.portfolio-filter a#createdate').click(function(){
+						// alert('test');
+						$container.isotope({sortBy:'createdate'});
+					});
+					
+					$('div.portfolio-filter a#wantamount').click(function(){
+						// alert('test');
+						$container.isotope({sortBy:'wantamount'});
+					});
+					/*
+					$('div.portfolio-filter a#sort').click(function(){
+						$container.isotope({sortBy:'title'});
+					});
+					*/
+
 
 				});
 

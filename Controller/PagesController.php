@@ -44,7 +44,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('Project');
 
 /**
  * Displays a view
@@ -71,6 +71,16 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		if($path[0]=='home'){
+			
+			$this->Project->recursive = 0;
+			$options = array('status'=>'1');
+			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
+			$this->set('projects', $projects);
+				
+		}		
+
+
 		$this->render(implode('/', $path));
 	}
 }

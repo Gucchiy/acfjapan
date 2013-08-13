@@ -18,6 +18,7 @@
  */
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$root_url = $this->Html->url('/',true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,60 +83,64 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 */
 ?>
 <!-- Stylesheets -->
-<link rel="stylesheet" href="assets/css/normalize.css">
-<link rel="stylesheet" href="assets/css/skeleton.css">
-<link rel="stylesheet" href="assets/css/typography.css">
-<link rel="stylesheet" href="assets/css/layout.css">
-<link rel="stylesheet" href="assets/css/form.css">
-<link rel="stylesheet" href="assets/css/shortcodes.css">
-<link rel="stylesheet" href="assets/css/elements.css">
-<link rel="stylesheet" href="assets/css/ie.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/normalize.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/skeleton.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/typography.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/layout.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/form.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/shortcodes.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/elements.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/css/ie.css">
 
 <!-- Icons -->
-<link rel="stylesheet" href="assets/icons/glyphicons/style.css">
-<link rel="stylesheet" href="assets/icons/zocial/zocial.css">
-<link rel="stylesheet" href="assets/icons/social/social.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/icons/glyphicons/style.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/icons/zocial/zocial.css">
+<link rel="stylesheet" href="<?=$root_url?>assets/icons/social/social.css">
 
 <!-- LayerSlider CSS -->
-<link rel="stylesheet" href="plugins/layerslider/css/layerslider.css">
+<link rel="stylesheet" href="<?=$root_url?>plugins/layerslider/css/layerslider.css">
 
 <!-- FlexSlider CSS -->
-<link rel="stylesheet" href="plugins/flexslider/flexslider.css">
+<link rel="stylesheet" href="<?=$root_url?>plugins/flexslider/flexslider.css">
 
 <!-- Magnific Popup -->
-<link rel="stylesheet" href="plugins/magnificpopup/jquery.magnific-popup.css">
+<link rel="stylesheet" href="<?=$root_url?>plugins/magnificpopup/jquery.magnific-popup.css">
 
 
 <!-- jQuery -->
-<script src="assets/js/jquery-1.9.1.min.js"></script>
+<script src="<?=$root_url?>assets/js/jquery-1.9.1.min.js"></script>
 
 <!-- Third Party Plugins -->
-<script src="plugins/jflickrfeed/jflickrfeed.min.js"></script>
-<script src="plugins/tweet/jquery.tweet.min.js"></script>
-<script src="plugins/fitvids/jquery.fitvids.min.js"></script>
-<script src="plugins/map/gmap3.min.js"></script>
-<script src="plugins/isotope/jquery.isotope.min.js"></script>
-<script src="plugins/caroufredsel/jquery.carouFredSel-6.2.0-packed.js"></script>
-<script src="plugins/flexslider/jquery.flexslider-min.js"></script>
-<script src="assets/js/jquery.timeline.min.js"></script>
-<script src="plugins/magnificpopup/jquery.magnific-popup.min.js"></script>
+<script src="<?=$root_url?>plugins/jflickrfeed/jflickrfeed.min.js"></script>
+<script src="<?=$root_url?>plugins/tweet/jquery.tweet.min.js"></script>
+<script src="<?=$root_url?>plugins/fitvids/jquery.fitvids.min.js"></script>
+<script src="<?=$root_url?>plugins/map/gmap3.min.js"></script>
+<script src="<?=$root_url?>plugins/isotope/jquery.isotope.min.js"></script>
+<script src="<?=$root_url?>plugins/caroufredsel/jquery.carouFredSel-6.2.0-packed.js"></script>
+<script src="<?=$root_url?>plugins/flexslider/jquery.flexslider-min.js"></script>
+<script src="<?=$root_url?>assets/js/jquery.timeline.min.js"></script>
+<script src="<?=$root_url?>plugins/magnificpopup/jquery.magnific-popup.min.js"></script>
 
 <!-- LayerSlider Parallax 3D Slider -->
-<script src="plugins/layerslider/js/jquery-easing-1.3.js"></script>
-<script src="plugins/layerslider/js/jquerytransit.js"></script>
-<script src="plugins/layerslider/js/layerslider.transitions.js"></script>
-<script src="plugins/layerslider/js/layerslider.kreaturamedia.jquery.min.js"></script>
+<script src="<?=$root_url?>plugins/layerslider/js/jquery-easing-1.3.js"></script>
+<script src="<?=$root_url?>plugins/layerslider/js/jquerytransit.js"></script>
+<script src="<?=$root_url?>plugins/layerslider/js/layerslider.transitions.js"></script>
+<script src="<?=$root_url?>plugins/layerslider/js/layerslider.kreaturamedia.jquery.min.js"></script>
 
 <!-- Themer Assets -->
-<script src="themer/less-1.3.3.min.js"></script>
-<script src="themer/minicolors/jquery.minicolors.js"></script>
-<script src="themer/youxi.themer.min.js"></script>
-<link rel="stylesheet" href="themer/minicolors/jquery.minicolors.css">
-<link rel="stylesheet" href="themer/youxi.themer.css">
+<script src="<?=$root_url?>themer/less-1.3.3.min.js"></script>
+<script src="<?=$root_url?>themer/minicolors/jquery.minicolors.js"></script>
+<script src="<?=$root_url?>themer/youxi.themer.min.js"></script>
+<link rel="<?=$root_url?>stylesheet" href="themer/minicolors/jquery.minicolors.css">
+<link rel="<?=$root_url?>stylesheet" href="themer/youxi.themer.css">
 
 <!-- Template Script -->
-<script src="assets/js/youxi.plugins.min.js"></script>
-<script src="assets/js/youxi.setup.js"></script>
+<script src="<?=$root_url?>assets/js/youxi.plugins.min.js"></script>
+<script src="<?=$root_url?>assets/js/youxi.setup.js"></script>
+
+<?php
+	echo $this->Html->css('acf');
+?>
 
 
 </head>
