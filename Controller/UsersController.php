@@ -155,5 +155,6 @@ class UsersController extends AppController {
 		$this->facebook->destroySession();
 		$this->redirect(array('controller'=>'Users','action'=>'index'));
 	}
+	
 
 }

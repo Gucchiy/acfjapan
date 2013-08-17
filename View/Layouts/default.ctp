@@ -150,6 +150,15 @@ $root_url = $this->Html->url('/',true);
 ?>
 
 <body class="wide">
+	
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=673806045966655";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 	<!-- Main Content Wrap (1024px wide by default) -->
 	<div class="main-wrap">
@@ -163,7 +172,11 @@ $root_url = $this->Html->url('/',true);
 							<a href="<?=$root_url?>" class="logo"><?php echo $this->Html->image('brand-logo.png', array('alt'=>'ACF'))?></a>
 							<span class="tagline">ACF－アジア・クラウド・ファンディング―</span>
 						</div>
+
 						<nav class="header-col navigation">
+							<a class="newuser" href="#">新規登録</a>
+							<a class="login" href="#">ログイン</a>
+							<a class="fblogin" href="#">Facebook ログイン</a>
 							<ul>
 								<li class="active">
 									<a href="index.html">応援する</a>
@@ -209,10 +222,12 @@ $root_url = $this->Html->url('/',true);
 						<p>ACFアジア・クラウド・ファンディングでは、女性ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
 					</div>
 
-					<!-- Flickr -->
+					<!-- Facebook -->
 					<div class="one-third column">
-						<h4>Facebookいいね！山口さん</h4>
-						<div class="flickr-stream" data-flickr-id="88444813@N08" data-limit="8"></div>
+						<div class="foot_fb">
+							<div class="fb-like" data-href="http://acfjapan.com/" data-width="300" data-show-faces="true" data-send="true" style="margin:0px"></div>
+						</div>
+
 					</div>
 
 					<!-- Tweets -->

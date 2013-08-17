@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Project $Project
  */
 class ProjectsController extends AppController {
+	
+	public $uses = array('Project','ProjectComment','User');
 
 /**
  * index method
@@ -28,8 +30,21 @@ class ProjectsController extends AppController {
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
+		if($this->request->is('post')){
+			
+			// print_r($this->request->data);
+			
+			$this->request->data['ProjectComment']['project_id'] = $id;
+			$this->request->data['ProjectComment']['user_id'] = $this->user_id;
+			$this->ProjectComment->create();
+			$this->ProjectComment->save($this->request->data);
+			$this->redirect(array('action'=>'view', $id));
+		}
+		$this->Project->recursive = 3;
 		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
 		$this->set('project', $this->Project->find('first', $options));
+
+
 	}
 
 /**
