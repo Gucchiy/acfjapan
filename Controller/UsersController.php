@@ -39,16 +39,37 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			
+			if($this->data['User']['password'] != $this->data['User']['password_confirm']){
+				
+				$this->Session->setFlash('入力された Password が異なります');
+				return;
+			}
+			
+			if( $this->User->find('count',array('conditions'=>array('email'=>$this->data['User']['email']))) >= 1 ){
+				$this->Session->setFlash('すでに登録済みの email アドレスです。');
+				return;				
+			}
+			
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('新規登録が完了しました。'));
+				$this->redirect(array('controller'=>'pages','action'=>'display'));
 			} else {
+				
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
 		$belongings = $this->User->Belonging->find('list');
 		$this->set(compact('belongings'));
+		
+		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+			.'back_url='.urldecode(Router::url('/',true));
+
+		$url = $this->facebook->getLoginUrl(
+			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
+		
+		$this->set('fb_login_url_top', $url);
 	}
 
 /**
@@ -148,12 +169,47 @@ class UsersController extends AppController {
 		}
 		$this->Session->write('user_id',$user_data['User']['id']);
 		
+		// print_r($this->params['url']);
+
+		if( isset($this->params['url']['back_url'])){
+			$this->set('back_url', $this->params['url']['back_url']);
+		}else{
+			$this->set('back_url', Router::url('/',true) );
+		}
+		
     }  
+
+	function login()
+	{
+		if ($this->request->is('post')) {
+			$user_data_db = $this->User->find('first', array('conditions'=>array('email'=>$this->data['User']['email'])));
+			if(!isset($user_data_db)){
+				
+				$this->setFlash('登録されていない email アドレスです。');
+				return false;
+			}
+			if($user_data_db['User']['email'] != $this->data['User']['email']){
+				
+				$this->setFlash('パスワードが異なります。');
+				return false;
+			}
+		}
+		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+			.'back_url='.urldecode(Router::url('/',true));
+
+		$url = $this->facebook->getLoginUrl(
+			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
+		
+		$this->set('fb_login_url_top', $url);
+
+
+	}
 
 	function logout()
 	{
 		$this->facebook->destroySession();
-		$this->redirect(array('controller'=>'Users','action'=>'index'));
+		$this->Session->destroy();
+		$this->redirect(Router::url('/',true));
 	}
 	
 

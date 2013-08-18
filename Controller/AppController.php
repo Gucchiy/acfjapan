@@ -143,17 +143,21 @@ class AppController extends Controller {
 			$this->set('fb_me', $this->fb_me );
 					
 		}else{
+//			echo $this->here.'<br />';
+//			print_r( $this->pass.'<br />' );
+//			print_r($this->params);
+			$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+				.'back_url='.urldecode(Router::url('',true));
+
+			$url = $this->facebook->getLoginUrl(
+				array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
 			
-			if( $this->name == 'Pages' && $this->action == 'display' ){
-				
-				$url = $this->facebook->getLoginUrl(
-					array('scope' => 'email,publish_stream', 'redirect_uri'=>Router::url('/',true).'/users/callback_facebook'));  			
-				$this->set('fb_login_url', $url);
-				
-			}else{
-				
-				$this->redirect('/');
-			}
+			$this->set('fb_login_url', $url);
+			
+			// if はいっちゃいけないページ
+			// 			if( $this->name == 'Pages' && $this->action == 'display' )
+			//				
+			//	$this->redirect('/');
 		}
 						
 	}

@@ -1,6 +1,7 @@
 <?php
 	if( isset($fb_login_url)){
 
+		/*
 			echo $this->Html->div(
 				'login',
 				$this->Html->link(
@@ -10,14 +11,19 @@
 				),
 				array('escape'=>false)				
 			);
+		 * 
+		 */
 	}else{
 		
+		/*
 		if($fb_logout_url){
 			
 			echo $this->Html->link('ユーザーページへジャンプ', array('controller'=>'users','action'=>'index'));
 			echo "<br /><br />\n";
 			echo $this->Html->link('ログアウト', $fb_logout_url );
 		}
+		 * 
+		 */
 	}
 	
 	// if( isset($fb_me) ){ print_r($fb_me);}
@@ -40,18 +46,39 @@
 
 	foreach($projects as $project){
 
+		$disp_data_array = array($project['Project']['title'],$project['Project']['objective'],$project['Project']['overview'],$project['Project']['title']);
     	for($i=1; $i<4; $i++){
     		
-			$image_path = $project['Project']["image{$i}"];
+			$image_path = $project['Project']["slide{$i}"];
 			if( !strlen($image_path) ) continue;
 		
 ?>
 				<!-- LayerSlider layer (Hot Air Balloon) -->
-				<div class="ls-layer" style="slidedelay: 6000; delayout: 500; transition2d: all;">
+				<div class="ls-layer" style="slidedelay: 3000; delayout: 500;">
+				<!-- div class="ls-layer" style="slidedelay: 6000; delayout: 500; transition2d: all;" -->
         		        
 				    <!--LayerSlider background-->
 				    <img class="ls-bg" src="img/<?=$image_path?>" alt="">
+				    <?php
+				    	echo $this->Html->link('', array('controller'=>'projects','action'=>'view',$project['Project']['id']),array( 'class'=>'ls-link'));
 
+						$disp_data = $disp_data_array[$i-1];
+						if(strlen($disp_data)>2){
+
+				    ?>
+						<div class="ls-s-1"
+							style="overflow:hidden; left: 0; top: 350px; font-size: 18px; padding:10px; line-height: 25px; white-space: nowrap; color: #E9E4D9; background-color: #36160E"
+							rel="delayin: 500; slidedirection: fade; slideoutdirection: fade;">
+							<?php										
+								// echo $disp_data;
+								echo mb_substr($disp_data,0,45).'<br />';
+								echo mb_substr($disp_data,46,45).'<br />';
+								echo mb_substr($disp_data,91,44).'…';
+							?>
+						</div>
+					<?php
+						}
+					?>
 				</div>
 <?php
 		}

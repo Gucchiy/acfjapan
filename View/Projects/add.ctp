@@ -1,4 +1,5 @@
-<div class="projects form">
+<!-- Content -->
+<div class="content">
 <?php echo $this->Form->create('Project'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Project'); ?></legend>
@@ -15,6 +16,11 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
+
+
+</div>
+
+<div class="projects form">
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

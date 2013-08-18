@@ -1,3 +1,4 @@
-<?php // if(false): ?>
-<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=<?php echo Router::url('/',true);?>" />
-<?php // endif ?>
+<?php
+	// echo $back_url;
+?>
+	<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=<?=$back_url?>" />

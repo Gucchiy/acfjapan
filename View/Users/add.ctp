@@ -1,34 +1,111 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('email');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('twitter1');
-		echo $this->Form->input('twitter2');
-		echo $this->Form->input('fbid');
-		echo $this->Form->input('fbname');
-		echo $this->Form->input('fbtoken');
-		echo $this->Form->input('cardnum');
-		echo $this->Form->input('belonging_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<script>
+	function OnSubmit()
+	{
+		if(document.userAddForm.agree[1].checked) return true;
+		alert('「利用規約に同意する」をチェックする必要があります。')
+		return false;		
+	}
+	
+</script>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Belongings'), array('controller' => 'belongings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Belonging'), array('controller' => 'belongings', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Investments'), array('controller' => 'investments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Investment'), array('controller' => 'investments', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Participations'), array('controller' => 'participations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Participation'), array('controller' => 'participations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-	</ul>
+
+<!-- Content -->
+<div class="content">
+	
+	<!-- Page Header -->
+	<div class="page-header">
+		<div class="container">
+			<div class="sixteen columns">
+				<h1 class="page-title">
+					Member <span>join our awesome team to get many benefits</span>
+				</h1>
+				<ul class="breadcrumb">
+					<?php
+						// <li><a href="#">Home</a> <span class="divider">&raquo;</span></li>
+						// <li class="active">Portfolio</li>
+					?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Start Content -->
+	<div class="container main">
+
+		<div class="row">
+			<div class="portfolio-detail clearfix">
+
+				<!-- Portfolio Title -->
+				<div class="sixteen columns">
+					<h3 class="title">
+						<span>新規メンバー登録</span>
+					</h3>
+				</div>
+				<!-- End Portfolio Title -->
+				<!-- Portfolio Info -->
+				<div class="ten columns">
+					<fieldset>
+					<?php 
+						echo $this->Form->create('User',array('onsubmit'=>'return OnSubmit()','name'=>'userAddForm'));
+
+						echo $this->Html->image('member-mail.png');
+						
+						echo $this->Form->input('email');
+						echo $this->Form->input('fbname', array('label'=>'お名前'));
+						echo $this->Form->input('password');
+						echo $this->Form->input('password_confirm', array('type'=>'password','label'=>'Password確認用', 'div'=>'input passwordd required'));
+						
+						echo $this->Form->input('agree', array('type'=>'checkbox','label'=>'<a href="#">利用規約</a>に同意する','div'=>'input checkbox required','name'=>'agree'));
+						
+						echo $this->Form->end(__('新規登録')); ?>
+					</fieldset>
+
+				</div>
+
+				<div class="six columns">
+					<script>
+						function OnClick()
+						{
+							if(document.addFormFb.agreefb[1].checked) return true;
+							alert('「利用規約に同意する」をチェックする必要があります。');
+							return false;
+						}
+					</script>
+					<fieldset><form name="addFormFb">
+					<?php
+					
+						echo $this->Html->image('member-fb.png',array('url'=>$fb_login_url_top,'onclick'=>'return OnClick()'));
+						echo '<br /><br />';
+						echo $this->Form->input('agree', array('type'=>'checkbox','label'=>'<a href="#">利用規約</a>に同意する','div'=>'input checkbox required','name'=>'agreefb'));
+					?>
+					</fieldset></form>
+
+					<fieldset style="margin-top: 10px;">
+					<?php
+						echo $this->Html->image('member-other.png');
+					?>
+					<ul style="margin-top:10px;">
+						<li><a href="<?=$fb_login_url_top?>">facebook でログイン</a></li>
+						<li>メールアドレスでログイン</li>
+					</ul>
+					
+					<?php
+						echo $this->Form->create('User',array('controller'=>'Users','action'=>'login'));
+
+						echo $this->Form->input('email');
+						echo $this->Form->input('password');
+										
+						echo $this->Form->end(__('ログイン'));
+					?>
+										
+					</fieldset>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
+
+

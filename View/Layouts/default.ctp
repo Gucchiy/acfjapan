@@ -174,9 +174,20 @@ $root_url = $this->Html->url('/',true);
 						</div>
 
 						<nav class="header-col navigation">
-							<a class="newuser" href="#">新規登録</a>
-							<a class="login" href="#">ログイン</a>
-							<a class="fblogin" href="#">Facebook ログイン</a>
+							<?php
+								if(isset($fb_login_url)){
+									echo $this->Html->link('新規登録', array('controller'=>'users','action'=>'add'),array('class'=>'newuser'));
+									echo $this->Html->link('ログイン', array('controller'=>'users','action'=>'login'),array('class'=>'login'));
+									echo $this->Html->link('Facebook ログイン', $fb_login_url,array('class'=>'fblogin'));
+									
+								}else{
+
+									if(isset($fb_logout_url))
+										echo $this->Html->link('ログアウト', $fb_logout_url, array('class'=>'login') );
+									
+								}
+							?>
+							
 							<ul>
 								<li class="active">
 									<a href="index.html">応援する</a>
@@ -248,10 +259,10 @@ $root_url = $this->Html->url('/',true);
 			<!-- Footer Bottom -->
 			<div class="footer-bottom">
 				<div class="container">
-					<div class="eight columns">
+					<div class="seven columns">
 						Copyright <a href="http://www.youxithemes.com">ACF</a>. All Rights Reserved.
 					</div>
-					<div class="eight columns">
+					<div class="nine columns">
 						<ul class="footer-nav">
 							<li><a href="index.html">利用規約</a></li>
 							<li><a href="portfolio-3.html">特定商取引法上の表示</a></li>
