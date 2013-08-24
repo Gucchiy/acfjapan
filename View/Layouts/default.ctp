@@ -264,10 +264,26 @@ $root_url = $this->Html->url('/',true);
 					</div>
 					<div class="nine columns">
 						<ul class="footer-nav">
-							<li><a href="index.html">利用規約</a></li>
-							<li><a href="portfolio-3.html">特定商取引法上の表示</a></li>
-							<li><a href="blog.html">個人情報保護方針</a></li>
-							<li><a href="contact.html">運営会社</a></li>
+							<li>
+								<?php
+									echo $this->Html->link('利用規約',array('controller'=>'pages','action'=>'terms'));
+								?>
+							</li>
+							<li>
+								<?php
+									echo $this->Html->link('特定商取引法上の表示',array('controller'=>'pages','action'=>'legal'));
+								?>
+							</li>
+							<li>
+								<?php
+									echo $this->Html->link('個人情報保護方針',array('controller'=>'pages','action'=>'privacy'));
+								?>
+							</li>
+							<li>
+								<?php
+									echo $this->Html->link('運営会社',array('controller'=>'pages','action'=>'company'));
+								?>
+							</li>
                             
 					  </ul>
 					</div>
