@@ -31,7 +31,6 @@
 								}
 							?>
 							
-							<img src='https://graph.facebook.com/<?=$project['User']['fbid']?>/picture' />			
 						</div>
 						<div class="data">
 							<h3><?=$project['User']['fbname']?></h3>
