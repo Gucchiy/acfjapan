@@ -111,7 +111,7 @@
 
 
 				//				echo "<img src='https://graph.facebook.com/{$project_comment['User']['fbid']}/picture' />";
-				//				echo "<p>{$project_comment['content']}</p>";
+								echo "<p>{$project_comment['content']}</p>";
 				//				print_r($project_comment);
 				//				echo "<p>{$project_comment['ProjectComment']['content']}</p>";
 				//				print_r( $project_comment['User'] );
