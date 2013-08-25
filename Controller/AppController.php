@@ -79,7 +79,7 @@ class AppController extends Controller {
 
 		parent::beforeFilter();
 		
-		$pjx_base_url = Configure::read('pjx_base_url');
+		// $pjx_base_url = Configure::read('pjx_base_url');
 		
 		$fb_user = $this->facebook->getUser();
 		// test
@@ -146,13 +146,30 @@ class AppController extends Controller {
 //			echo $this->here.'<br />';
 //			print_r( $this->pass.'<br />' );
 //			print_r($this->params);
-			$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
-				.'back_url='.urldecode(Router::url('',true));
 
-			$url = $this->facebook->getLoginUrl(
-				array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
-			
-			$this->set('fb_login_url', $url);
+			if($this->Session->read('user_id')!=null){
+				
+				$this->user_id = $this->Session->read('user_id');
+				$this->user_data = $this->User->find('first',
+					array('conditions'=>array('User.id'=>$this->user_id)));
+				
+				$this->set('user_data', $this->user_data );
+				
+				$this->set('fb_logout_url', Router::url('/',true).'/users/logout');
+
+				
+			}else{
+				
+				$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+					.'back_url='.urldecode(Router::url('',true));
+		
+				$url = $this->facebook->getLoginUrl(
+					array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
+				
+				$this->set('fb_login_url', $url);
+				
+			}
+
 			
 			// if はいっちゃいけないページ
 			// 			if( $this->name == 'Pages' && $this->action == 'display' )

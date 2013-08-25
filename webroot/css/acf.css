@@ -1,0 +1,349 @@
+@charset "utf-8";
+
+h1, h2, h3, h4, h5, h6, p{
+	/* color:#36160E; */
+	color:#7A6058;
+	background-color:transparent;
+}
+
+.portfolio-item .item-info{
+	padding: 0px;
+	margin: 0px;
+}
+	
+div.item-info div.progress
+{
+	float:left; 
+	margin:10px 0px 5px 10px;
+}
+
+div.item-info div.time
+{
+	float:right; 
+	font-weight: bold; 
+	margin: 10px 10px 5px 0px;
+}
+
+div.item-info div.want_amount div.amount_title
+{
+	clear:left;
+	float:left; 
+	width:60px; 
+	height:16px; 
+	background-color: #F08337; 
+	font-size:14px; 
+	color: #ffffff; 
+	padding:5px 10px; 
+	margin: 0px 0px 0px 10px;	
+}
+
+div.item-info div.want_amount div.value
+{
+	float:left; 
+	font-size:14px; 
+	color:#F08337 ; 
+	padding:5px 10px; 
+	margin: 0px 0px 0px 10px;
+}
+
+div.item-info div.from
+{
+	clear:both;
+	float:left;
+	width:90%; 
+	height:25px; 
+	text-align: left; 
+	overflow: hidden;
+	margin: 5px 0px 5px 10px;
+}
+
+div.item-info div.information
+{
+	width:100%; 
+	background-color: #E9E4D9; 
+	padding:0px; 
+	text-align: left; 
+	margin: 5px 0px 0px 0px;
+}
+
+div.item-info div.if_reach
+{
+	font-size:15px; 
+	font-weight: bold;
+	color:#F08337; 
+	padding: 5px 0px 5px 10px;
+}
+
+div.item-info div.spacial
+{
+	font-size:15px; 
+	font-weight: bold;
+	color:#F08337;
+	margin:0px 0px 5px 10px;
+}
+
+div.hart_progress
+{
+	top:5px;
+	right:5px;
+	position:absolute
+}
+
+div.hidden_want_amount
+{
+	visibility: hidden;
+}
+
+div.hidden_create_date
+{
+	visibility: hidden;	
+}
+
+div.hidden_total_progress
+{
+	visibility: hidden;	
+	
+}
+
+/* プロジェクトページ */
+
+div#item_info_side
+{
+	display:block;
+	margin:5%;
+	width:90%;
+	position:relative;
+}
+
+div#item_info_side div.hart_progress
+{
+	position:absolute;
+	display:block;
+	top:0px;
+	right:0px;
+}
+
+div#item_info_side div.time
+{
+	float:right; 
+	font-weight: bold; 
+	margin: 10px 10px 5px 0px;
+}
+
+div.box
+{
+	width:100%;
+	position:relative;
+	clear:both;
+	padding:0px;
+	margin:10px 0px;
+}
+
+div.brown_title
+{
+	float:left; 
+	width:80px; 
+	height:28px; 
+	background-color: #36160E; 
+	font-size:14px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	font-weight: bold;
+}
+
+div.box div.value
+{
+	float:left; 
+	font-size:13px; 
+	color:#36160E ; 
+	padding:0px; 
+	margin: 0px 0px 0px 10px;
+}
+
+div#item_info_side div.progress
+{
+	text-align:center;
+	margin: 5px 0px;
+}
+
+div#item_info_side h3
+{
+	margin-top:10px;
+}
+
+div.container.main h2
+{
+	font-size:30px;
+	font-weight: bold;
+}
+
+div.container.main div.user_info
+{
+	margin: 10px auto;
+/*	clear:both;*/
+	width:100%;
+	display: block;;
+
+}
+
+div.container.main div.user_info div.face
+{
+	width:86px;
+	height:86px;
+	background-color:#F08337;
+	padding:7px;
+	margin:0px;
+	float:left;
+}
+
+div.container.main div.user_info div.face img
+{
+	width:86px;
+	height:86px;
+	margin:0px;
+	padding:0px;
+}
+
+
+div.container.main div.user_info div.data
+{
+	background-color:#E9E4D9;
+	width:75%;
+	height:80px;
+	margin:0px 0px 0px 15px;
+	float:left;
+	padding: 10px;
+}
+
+div.container.main div.user_info div.data h3
+{
+	font-size:20px;
+	padding:5px;
+	margin:0px;
+}
+
+div.container.main div.user_info div.data p
+{
+	display:block;
+	font-size:15px;
+	width:auto;
+}
+
+div#rightside
+{
+	background-color:#E9E4D9; 
+}
+
+div.donation
+{
+	background-color:#ffffff;
+	padding-bottom:10px;
+	margin-bottom:10px;
+}
+
+div.donation p.price
+{
+	font-size:23px;
+	font-weight:bold;
+	color:#F08337;
+	text-align:right;
+	margin:0px 20px 0px 0px;
+}
+
+/* フッター */
+.footer{
+	background-color:#D3C1A6;
+	color:#36160E;
+}
+
+.footer h1, 
+.footer h2, 
+.footer h3, 
+.footer h4, 
+.footer h5, 
+.footer h6 {
+	color: #36160E;
+}
+
+.footer-bottom
+{
+	background-color:#36160E;
+}
+
+div.project
+{
+	clear:both;
+	width:100%;
+	
+}
+
+a.newuser
+{
+	width:80px; 
+	height:20px; 
+	background-color: #36160E; 
+	font-size:10px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	display:block;
+	position:absolute;
+	top:3px;
+	right:26%;
+	font-weight: normal;
+}
+
+a.login
+{
+	width:80px; 
+	height:20px; 
+	background-color: #F08337; 
+	font-size:10px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	display:block;
+	position:absolute;
+	top:3px;
+	right:17%;
+	font-weight: normal;
+}
+
+a.fblogin
+{
+	width:130px; 
+	height:20px; 
+	background-color: #3B5998; 
+	font-size:10px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	display:block;
+	position:absolute;
+	top:3px;
+	right:3%;
+	font-weight: normal;
+}
+
+a.logout
+{
+	width:80px; 
+	height:20px; 
+	background-color: #d3c1a6; 
+	font-size:10px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	display:block;
+	position:absolute;
+	top:3px;
+	right:17%;
+	font-weight: normal;
+}
+

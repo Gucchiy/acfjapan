@@ -183,7 +183,7 @@ $root_url = $this->Html->url('/',true);
 								}else{
 
 									if(isset($fb_logout_url))
-										echo $this->Html->link('ログアウト', $fb_logout_url, array('class'=>'login') );
+										echo $this->Html->link('ログアウト', $fb_logout_url, array('class'=>'logout') );
 									
 								}
 							?>

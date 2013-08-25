@@ -63,7 +63,7 @@
 					
 						echo $this->Html->image('login-fb.png',array('url'=>$fb_login_url_top,'onclick'=>'return OnClick()'));
 						echo '<br /><br />';
-						echo $this->Form->input('preserve', array('type'=>'checkbox','label'=>'ログイン状態を保持する','name'=>'preservefb'));
+						// echo $this->Form->input('preserve', array('type'=>'checkbox','label'=>'ログイン状態を保持する','name'=>'preservefb'));
 					?>
 					</fieldset></form>
 

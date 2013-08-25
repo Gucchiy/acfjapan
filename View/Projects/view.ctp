@@ -1,5 +1,5 @@
 <?php
-	$now_url = $this->Html->url('',true);
+	$now_url = $this->Html->url('',true);	
 ?>
 
 <!-- Content -->
@@ -20,6 +20,17 @@
 
 					<div class="user_info clearfix" style="clear:both">
 						<div class="face">
+							<?php
+								if(strlen($project['User']['fbid']>2)){
+									
+									echo $this->Html->image("https://graph.facebook.com/{$project['User']['fbid']}/picture");
+								
+								}else{
+									
+									echo $this->Html->image($project['User']['image']);
+								}
+							?>
+							
 							<img src='https://graph.facebook.com/<?=$project['User']['fbid']?>/picture' />			
 						</div>
 						<div class="data">
@@ -90,9 +101,18 @@
 							echo $this->Form->end('コメントする');
 							foreach($project['ProjectComment'] as $project_comment ){
 				
-								echo "<img src='https://graph.facebook.com/{$project_comment['User']['fbid']}/picture' />";
+								if(strlen($project_comment['User']['fbid']>2)){
+									
+									echo $this->Html->image("https://graph.facebook.com/{$project_comment['User']['fbid']}/picture");
 								
-								echo "<p>{$project_comment['content']}</p>";
+								}else{
+									
+									echo $this->Html->image($project_comment['User']['image']);
+								}
+
+
+				//				echo "<img src='https://graph.facebook.com/{$project_comment['User']['fbid']}/picture' />";
+				//				echo "<p>{$project_comment['content']}</p>";
 				//				print_r($project_comment);
 				//				echo "<p>{$project_comment['ProjectComment']['content']}</p>";
 				//				print_r( $project_comment['User'] );

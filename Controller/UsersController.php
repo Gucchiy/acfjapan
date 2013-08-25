@@ -38,6 +38,16 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+
+		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+			.'back_url='.urldecode(Router::url('/',true));
+
+		$url = $this->facebook->getLoginUrl(
+			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
+		
+		$this->set('fb_login_url_top', $url);
+
+
 		if ($this->request->is('post')) {
 			
 			if($this->data['User']['password'] != $this->data['User']['password_confirm']){
@@ -47,12 +57,32 @@ class UsersController extends AppController {
 			}
 			
 			if( $this->User->find('count',array('conditions'=>array('email'=>$this->data['User']['email']))) >= 1 ){
-				$this->Session->setFlash('すでに登録済みの email アドレスです。');
-				return;				
+				
+				$fb_user = $this->User->find('first',array('conditions'=>array('email'=>$this->data['User']['email'])));
+				if(strlen($fb_user['User']['fbid'])>2){
+					
+					/*
+					if(strlen($fb_user['']))
+					$fb_user['User']['password'] = $this->data['User']['password'];
+					$this->User->save($fb_user);
+					$this->Session->setFlash('お客様の Facebook ID が登録されていましたので ID を統合しました。');
+					*/
+					$this->Session->setFlash("メールアドレス {$fb_user['User']['email']} は、すでにfacebook ID として登録済みです。");	
+					
+				}else{
+					$this->Session->setFlash('すでに登録済みの email アドレスです。');
+				}
+				return;	
 			}
 			
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
+
+				/*
+				$this->user_id = $user_data_db['User']['id'];
+				$this->Session->write('user_id', $this->user_id );
+				*/
+
 				$this->Session->setFlash(__('新規登録が完了しました。'));
 				$this->redirect(array('controller'=>'pages','action'=>'display'));
 			} else {
@@ -63,13 +93,6 @@ class UsersController extends AppController {
 		$belongings = $this->User->Belonging->find('list');
 		$this->set(compact('belongings'));
 		
-		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
-			.'back_url='.urldecode(Router::url('/',true));
-
-		$url = $this->facebook->getLoginUrl(
-			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
-		
-		$this->set('fb_login_url_top', $url);
 	}
 
 /**
@@ -193,6 +216,11 @@ class UsersController extends AppController {
 				$this->setFlash('パスワードが異なります。');
 				return false;
 			}
+			$this->user_id = $user_data_db['User']['id'];
+			$this->Session->write('user_id', $this->user_id );
+			$this->redirect(array('controller'=>'pages','action'=>'display'));
+
+			
 		}
 		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
 			.'back_url='.urldecode(Router::url('/',true));
