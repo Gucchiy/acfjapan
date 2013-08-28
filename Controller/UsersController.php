@@ -75,6 +75,8 @@ class UsersController extends AppController {
 				return;	
 			}
 			
+			$this->request->data['User']['fbname'] = $this->request->data['User']['last_name'].' '.$this->request->data['User']['first_name'];
+			
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 
@@ -184,11 +186,16 @@ class UsersController extends AppController {
 
 		}else{
 			
+			/*
 			$this->User->create();
 			$this->User->save( $user_data );			
 			$user_data['User']['id'] = $this->User->getID();
 			
 			$this->Session->setFlash('はじめまして、'.$me['username'].'さん');
+			 * 
+			 */
+			 $this->Session->write('preparing_userdata', $user_data);
+			 $this->redirect(array('action'=>'confirm'));
 		}
 		$this->Session->write('user_id',$user_data['User']['id']);
 		
@@ -200,20 +207,47 @@ class UsersController extends AppController {
 			$this->set('back_url', Router::url('/',true) );
 		}
 		
-    }  
+    } 
+
+	function confirm()
+	{
+		$user_data = $this->Session->read('preparing_userdata');
+		$this->set('user_data',$user_data);
+		
+		if ($this->request->is('post')) {
+			// きっと同意ボタンは押されている
+			$this->User->create();
+			$this->User->save( $user_data );			
+			$user_data['User']['id'] = $this->User->getID();
+			
+			$this->Session->setFlash('はじめまして、'.$user_data['User']['fbname'].'さん');
+			
+			$this->redirect(array('controller'=>'pages','action'=>'display'));
+			// $this->redirect(array('Controller'=>'Pages','action'=>'display'));		
+		}		
+	}
 
 	function login()
 	{
+		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
+			.'back_url='.urldecode(Router::url('/',true));
+
+		$url = $this->facebook->getLoginUrl(
+			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
+		
+		$this->set('fb_login_url_top', $url);
+
 		if ($this->request->is('post')) {
 			$user_data_db = $this->User->find('first', array('conditions'=>array('email'=>$this->data['User']['email'])));
 			if(!isset($user_data_db)){
 				
-				$this->setFlash('登録されていない email アドレスです。');
+				$this->Session->setFlash('登録されていない email アドレスです。');
 				return false;
 			}
-			if($user_data_db['User']['email'] != $this->data['User']['email']){
+			if($user_data_db['User']['password'] != $this->data['User']['password']){
 				
-				$this->setFlash('パスワードが異なります。');
+				
+				$this->Session->setFlash('パスワードが異なります。');
 				return false;
 			}
 			$this->user_id = $user_data_db['User']['id'];
@@ -222,13 +256,6 @@ class UsersController extends AppController {
 
 			
 		}
-		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
-			.'back_url='.urldecode(Router::url('/',true));
-
-		$url = $this->facebook->getLoginUrl(
-			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
-		
-		$this->set('fb_login_url_top', $url);
 
 
 	}

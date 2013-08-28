@@ -52,7 +52,9 @@
 						echo $this->Html->image('member-mail.png');
 						
 						echo $this->Form->input('email');
-						echo $this->Form->input('fbname', array('label'=>'お名前'));
+						// echo $this->Form->input('fbname', array('label'=>'お名前'));
+						echo $this->Form->input('last_name', array('label'=>'姓'));
+						echo $this->Form->input('first_name', array('label'=>'名'));
 						echo $this->Form->input('password');
 						echo $this->Form->input('password_confirm', array('type'=>'password','label'=>'Password確認用', 'div'=>'input passwordd required'));
 						

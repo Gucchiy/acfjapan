@@ -75,6 +75,7 @@ class AppController extends Controller {
 
 		if( $this->name == 'Users' && $this->action == 'callback_facebook' ) return;
 		if( $this->name == 'Users' && $this->action == 'logout' ) return;
+		if( $this->name == 'Users' && $this->action == 'confirm' ) return;
 		// if( $this->name == 'Pages' && $this->action == 'display' ) return;
 
 		parent::beforeFilter();

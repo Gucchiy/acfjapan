@@ -19,6 +19,10 @@
 					</h2>
 
 					<div class="user_info clearfix" style="clear:both">
+						
+						<div class="planner">プランナー</div>
+							
+						
 						<div class="face">
 							<?php
 								if(strlen($project['User']['fbid']>2)){
@@ -39,7 +43,7 @@
 						
 					</div>
 					
-					<div id="fb-root"></div><script>(function(d, s, id) {</br>var js, fjs = d.getElementsByTagName(s)[0];</br>if (d.getElementById(id)) {return;}</br>js = d.createElement(s); js.id = id;</br>js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";</br>fjs.parentNode.insertBefore(js, fjs);</br>}(document, 'script', 'facebook-jssdk'));</script></br><div class="fb-like" data-href="<?=$now_url?>" data-send="false" data-width="130" data-show_faces="false" data-font=""></div>
+					<div class="fb-like" data-href="<?=$now_url?>" data-send="false" data-width="130" data-show_faces="false" data-font=""></div>
 					
 					<div class="project clearfix">
 						
