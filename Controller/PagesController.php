@@ -44,7 +44,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Project');
+	public $uses = array('Project','Report');
 
 /**
  * Displays a view
@@ -77,6 +77,10 @@ class PagesController extends AppController {
 			$options = array('status'=>'1');
 			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
 			$this->set('projects', $projects);
+			
+			$this->Report->recursive = 2;
+			$reports = $this->Report->find('all', array('conditions'=>$options, 'limit'=>'6'));
+			$this->set('reports',$reports);
 				
 		}		
 

@@ -55,6 +55,7 @@ div.item-info div.from
 	text-align: left; 
 	overflow: hidden;
 	margin: 5px 0px 5px 10px;
+	color: #36160E;
 }
 
 div.item-info div.information
@@ -358,3 +359,24 @@ div.planner
 	margin-bottom: 10px; 
 	text-align: center;
 }
+
+div.report_title
+{
+	background-color: #36160E;
+	padding: 15px 25px;
+	color: #ffffff;
+	font-size: 18px;
+	width:100%;	
+}
+
+div.report_list
+{
+	padding: 15px 0px;
+}
+
+.portfolio-item .item-info .item-title a {
+	color: #36160E;
+}
+
+
+

@@ -6,26 +6,108 @@
 
 <!-- Content -->
 <div class="content">
-
-	<!-- Start Content -->
-	<div class="container main">
-		<div class="row">
-			<div class="portfolio-detail clearfix">
-
-				<!-- サイズの変更は、以下の eleven を 例えば twelve にする。サイドバーの追加なども同様に行える -->
-				<div class="eleven columns">
-					<h2>
-						運営会社
-					</h2>
-
-			
-					<p>運営会社</p>
+<div class="page-header">
+				<div class="container">
+					<div class="sixteen columns">
 					
-					<h3>段落サンプル</h3>
+					
+					
+					
+						<h1 class="page-title">
+							Company
+						</h1>
+						<ul class="breadcrumb">
+							<li><a href="#">Home</a> <span class="divider">&raquo;</span></li>
+							<li class="active">Company</li>
+						</ul>
+					</div>
+				</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container main">
+
+				<div class="eight columns">
+					<div class="row">
+						<div class="media">
+							<img src="demo/call.jpg" alt="">
+						</div>
+					</div>
+				</div>
+
+				<div class="eight columns">
+					<div class="row">
+						<h3>企業理念</h3>
+						<p>弊社は、多文化な背景を持つ人材を育て、より大きな夢を実現できる手助けをします。そして、音楽・教育・食の文化を通じて国と国の交流を増やし、よりあたたかい世界になれるよう、社会に貢献していきます。</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<h3 class="title">
+						<span>企業情報</span>
+					</h3>
+
+					<!-- Service Item -->
+					<div class="eight columns">
+						<div class="service">
+							<div class="icon">
+								<i class="icon-charts"></i>
+							</div>
+							<div class="text">
+								<h3 class="name">会社概要</h3>
+								<ul>
+							<li>社　　名　：　株式会社J.Y.PLANNING</li>
+							<li>本社所在地　：　東京都渋谷区恵比寿4丁目20番3号</br>
+							恵比寿ガーデンプレイスタワー18階</li>
+							<li>設　　立　：　平成21年7月</li>
+							<li>資本金　：　5,000万円</li>
+							<li>代表取締役　：　遅沢准</li>
+							<li>連絡先　：　mail[アット]jyplanning.com</br>
+							（アットを「＠」に変換して送信下さい）</li>
+						</ul>
+							
+							</div>
+						</div>
+					</div>
+					<!-- End Service Item -->
+
+					<!-- Service Item -->
+					<div class="eight columns">
+						<div class="service">
+							<div class="icon">
+								<i class="icon-globe"></i>
+							</div>
+							<div class="text">
+								<h3 class="name">事業内容</h3>
+								<ol>
+							<li>海外食品加工企業への投資及び経営コンサルティング</li>
+							<li>加工食品及び原材料の輸出入事業</li>
+							<li>メディア、テレビ技術業界、音楽や教育分野などのビジネスコンサルティング</li>
+							<li>クラウドファンディングを通じた社会貢献プロジェクトの運営</li>
+						</ol>
+
+				
+							</div>
+						</div>
+					</div>
+					<!-- End Service Item -->
+
+					
 
 				</div>
-			</div>
-		</div>
 
-	</div>
+
+			
+			
+
+			</div>
+
+
+
 </div>

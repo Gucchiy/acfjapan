@@ -230,7 +230,44 @@
 
 					</div>
 
+
 				</div>
+
+				<div class="report_title"><div class="container">
+					<div class="sixteen columns">
+						活躍しているNPO やNGO や企業の取材・紹介欄（PJ 立ち上げの敷居が高いと感じる）
+					</div>
+				</div></div>
+				<div class="report_list"><div class="container">
+					<div class="portfolio-isotope">
+					<?php
+						
+						foreach($reports as $report){	
+					?>
+						
+						<div class="one-third column portfolio-item photography">
+							<figure class="item-image">
+								<?php
+									echo $this->Html->image("{$report['Report']['image']}");
+								?>
+							</figure>
+						  <div class="item-info clearfix">
+						  	<h5 class="item-title" style="clear:both; padding-top:5px; font-weight: bold;">
+						  		<?=$report['Report']['title']?>
+						  	</h5>
+						  	<div class="from">
+								<?=$report['User']['fbname']?>（NPO 法人●●●）
+						  	</div>
+						  </div>
+						</div>						
+
+					<?php
+						}
+					?>
+
+					</div>
+				</div></div>
+				
 
 			</div>
 		</div>
