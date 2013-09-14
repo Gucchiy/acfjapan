@@ -4,7 +4,11 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('logo'); ?></th>
 			<th><?php echo $this->Paginator->sort('content'); ?></th>
+			<th><?php echo $this->Paginator->sort('content_image'); ?></th>
+			<th><?php echo $this->Paginator->sort('abstract'); ?></th>
+			<th><?php echo $this->Paginator->sort('abstract_image'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -13,7 +17,11 @@
 	<tr>
 		<td><?php echo h($team['Team']['id']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['name']); ?>&nbsp;</td>
+		<td><?php echo h($team['Team']['logo']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['content']); ?>&nbsp;</td>
+		<td><?php echo h($team['Team']['content_image']); ?>&nbsp;</td>
+		<td><?php echo h($team['Team']['abstract']); ?>&nbsp;</td>
+		<td><?php echo h($team['Team']['abstract_image']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['created']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -46,5 +54,7 @@
 		<li><?php echo $this->Html->link(__('New Belonging'), array('controller' => 'belongings', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Reports'), array('controller' => 'reports', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Report'), array('controller' => 'reports', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

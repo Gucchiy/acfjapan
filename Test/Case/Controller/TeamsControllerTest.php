@@ -21,7 +21,9 @@ class TeamsControllerTest extends ControllerTestCase {
 		'app.entry',
 		'app.comment',
 		'app.participation',
-		'app.aid'
+		'app.aid',
+		'app.project_comment',
+		'app.report'
 	);
 
 /**

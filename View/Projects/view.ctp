@@ -37,7 +37,18 @@
 							
 						</div>
 						<div class="data">
-							<h3><?=$project['User']['fbname']?></h3>
+							<h3>
+							<?php
+								echo $project['User']['fbname'];
+								if($project['Project']['team_id']){
+									
+									echo "&nbsp;（";
+									echo $this->Html->link($project['Team']['name'],array('controller'=>'teams','action'=>'view',$project['Project']['team_id']));
+									echo "）";
+									
+								}		
+							?>
+							</h3>
 							<p>コンテンツ</p>
 						</div>
 						

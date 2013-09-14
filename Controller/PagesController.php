@@ -71,7 +71,7 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		if($path[0]=='home'){
+		if($path[0]=='home' || $path[0]=='partner'){
 			
 			$this->Project->recursive = 0;
 			$options = array('status'=>'1');
@@ -82,7 +82,14 @@ class PagesController extends AppController {
 			$reports = $this->Report->find('all', array('conditions'=>$options, 'limit'=>'6'));
 			$this->set('reports',$reports);
 				
-		}		
+		}else if($path[0]=='player'){
+
+			$this->Project->recursive = 0;
+			$options = array('status'=>'1', 'type'=>'2');
+			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
+			$this->set('projects', $projects);
+			
+		}
 
 
 		$this->render(implode('/', $path));

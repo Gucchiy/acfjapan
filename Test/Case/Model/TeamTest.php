@@ -16,12 +16,14 @@ class TeamTest extends CakeTestCase {
 		'app.team',
 		'app.belonging',
 		'app.user',
+		'app.investment',
 		'app.project',
 		'app.entry',
 		'app.comment',
-		'app.investment',
 		'app.participation',
-		'app.aid'
+		'app.aid',
+		'app.project_comment',
+		'app.report'
 	);
 
 /**

@@ -1,131 +1,139 @@
-<div class="teams view">
-<h2><?php  echo __('Team'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($team['Team']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($team['Team']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Content'); ?></dt>
-		<dd>
-			<?php echo h($team['Team']['content']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($team['Team']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($team['Team']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Team'), array('action' => 'edit', $team['Team']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Team'), array('action' => 'delete', $team['Team']['id']), null, __('Are you sure you want to delete # %s?', $team['Team']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Teams'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Team'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Belongings'), array('controller' => 'belongings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Belonging'), array('controller' => 'belongings', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Belongings'); ?></h3>
-	<?php if (!empty($team['Belonging'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Team Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($team['Belonging'] as $belonging): ?>
-		<tr>
-			<td><?php echo $belonging['id']; ?></td>
-			<td><?php echo $belonging['user_id']; ?></td>
-			<td><?php echo $belonging['team_id']; ?></td>
-			<td><?php echo $belonging['created']; ?></td>
-			<td><?php echo $belonging['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'belongings', 'action' => 'view', $belonging['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'belongings', 'action' => 'edit', $belonging['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'belongings', 'action' => 'delete', $belonging['id']), null, __('Are you sure you want to delete # %s?', $belonging['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<?php
+	$now_url = $this->Html->url('',true);	
+?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Belonging'), array('controller' => 'belongings', 'action' => 'add')); ?> </li>
-		</ul>
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
+		<div class="row">
+			<div class="portfolio-detail clearfix">
+
+				<!-- Portfolio Info -->
+				<div class="eleven columns">
+					<h2 class="portfolio-title">
+						<?=$team['Team']['name']?>
+					</h2>
+					<div class="project clearfix">
+					<?php
+						if(strlen($team['Team']['image']) > 2 ){
+							
+							echo $this->Html->image($team['Team']['image']);
+							
+						}						
+					?>
+
+					</div>
+
+					<div class="user_info clearfix" style="clear:both">
+						
+						<div class="planner">代表者</div>
+						
+						<div class="face">
+							<?php
+								if(strlen($team['User']['fbid']>2)){
+									
+									echo $this->Html->image("https://graph.facebook.com/{$team['User']['fbid']}/picture");
+								
+								}else{
+									
+									echo $this->Html->image($team['User']['image']);
+								}
+							?>
+							
+						</div>
+						<div class="data">
+							<h3><?=$team['User']['fbname']?></h3>
+							<p>コンテンツ</p>
+						</div>
+						
+					</div>
+					<div class="fb-like" data-href="<?=$now_url?>" data-send="false" data-width="130" data-show_faces="false" data-font=""></div>
+
+					<?php
+						$tab1_content = addslashes("<h2 style='border-bottom: solid 2px #F08337; padding-bottom: 15px;'>".$team['Team']['name']."</h2>"
+							."<p>".$team['Team']['content']."</p>"
+							.$this->Html->image($team['Team']['content_image']) );
+					?>
+
+
+					<script>
+						
+						tab_content = {
+							'#tab1':"<?=$tab1_content?>",
+							'#tab2':"test2",
+							'#tab3':"test3"
+						}
+					
+						function OnTabClick(id){
+							$("#tab1").css('background-color',"#D3C1A6");
+							$("#tab2").css('background-color',"#D3C1A6");
+							$("#tab3").css('background-color',"#D3C1A6");
+							$(id).css('background-color',"#F08337");
+							$('#tab_content').html(tab_content[id]);
+						}
+						
+					</script>					
+					
+					<div class="project clearfix" style="border: solid 15px #36160E; padding:15px; width:85%; position:relative; margin-top:50px; font-size:18px;">
+						<div class="tab-click" style="background-color: #F08337;" id="tab1" onclick="OnTabClick('#tab1')">ご挨拶</div>
+						<div class="tab-click" style="left:150px;" id="tab2" onclick="OnTabClick('#tab2')">組織概要</div>
+						<div class="tab-click" style="left:285px;font-size:12px;padding-top:5px;height:45px;" id="tab3" onclick="OnTabClick('#tab3')">これまでの<br />プロジェクト</div>
+						<div id="tab_content">
+							<h2 style="border-bottom: solid 2px #F08337; padding-bottom: 15px;"><?=$team['Team']['name']?></h2>
+							<p><?=$team['Team']['content']?></p>
+							<?php
+								echo $this->Html->image($team['Team']['content_image']);
+							?>
+							
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="five columns" id="rightside">
+
+					<div id="item_info_side" class="clearfix">
+						
+					<?php
+						echo $this->Html->image("{$team['Team']['logo']}");
+					?>						
+						
+					</div>
+
+					<div id="item_info_side" class="clearfix">
+					<?php
+							echo $this->Html->image('pickup.png')."<br /><br />";
+					?>
+					</div>
+
+					<div id="item_info_side" class="clearfix">
+					<?php
+							echo $this->Html->image('news.png')."<br /><br />";
+					?>						
+					</div>
+
+					<div id="item_info_side" class="clearfix">
+					<?php
+							echo $this->Html->image('member.png')."<br /><br />";
+					?>						
+					</div>
+
+					<div id="item_info_side" class="clearfix">
+					<?php
+							echo $this->Html->image('history.png')."<br /><br />";
+					?>						
+					</div>
+					
+				</div>
+
+
+
+			</div>
+		</div>
 	</div>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Projects'); ?></h3>
-	<?php if (!empty($team['Project'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Team Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Content'); ?></th>
-		<th><?php echo __('Want Ammount'); ?></th>
-		<th><?php echo __('Deadline'); ?></th>
-		<th><?php echo __('Status'); ?></th>
-		<th><?php echo __('Type'); ?></th>
-		<th><?php echo __('Price'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($team['Project'] as $project): ?>
-		<tr>
-			<td><?php echo $project['id']; ?></td>
-			<td><?php echo $project['user_id']; ?></td>
-			<td><?php echo $project['team_id']; ?></td>
-			<td><?php echo $project['title']; ?></td>
-			<td><?php echo $project['content']; ?></td>
-			<td><?php echo $project['want_ammount']; ?></td>
-			<td><?php echo $project['deadline']; ?></td>
-			<td><?php echo $project['status']; ?></td>
-			<td><?php echo $project['type']; ?></td>
-			<td><?php echo $project['price']; ?></td>
-			<td><?php echo $project['created']; ?></td>
-			<td><?php echo $project['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'projects', 'action' => 'view', $project['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'projects', 'action' => 'edit', $project['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'projects', 'action' => 'delete', $project['id']), null, __('Are you sure you want to delete # %s?', $project['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>

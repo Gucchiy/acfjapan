@@ -256,7 +256,18 @@
 						  		<?=$report['Report']['title']?>
 						  	</h5>
 						  	<div class="from">
-								<?=$report['User']['fbname']?>（NPO 法人●●●）
+								<?php
+									echo $report['User']['fbname'];
+								
+									if($report['Report']['team_id']){
+										
+										echo "&nbsp;（";
+										echo $this->Html->link($report['Team']['name'],array('controller'=>'teams','action'=>'view',$report['Report']['team_id']));
+										echo "）";
+										
+									}
+									
+								?>								
 						  	</div>
 						  </div>
 						</div>						

@@ -190,21 +190,31 @@ $root_url = $this->Html->url('/',true);
 							
 							<ul>
 								<li class="active">
-									<a href="index.html">応援する</a>
+									<?php
+										echo $this->Html->link('応援する', array('controller'=>'pages','action'=>'partner'));
+										// <a href="index.html">応援する</a>
+									?>
 									
 								</li>
 								<li>
-									<a href="#">参加する</a>
-									
+									<?php
+										echo $this->Html->link('参加する', array('controller'=>'pages','action'=>'player'));
+									?>
 								</li>
 								<li>
-									<a href="#">企画する</a>
-									
-                                      
+									<?php
+										echo $this->Html->link('企画する', array('controller'=>'pages','action'=>'planner'));
+										// <a href="#">企画する</a>
+									?>
 								</li>
 								
 								
-								<li><a href="contact.html">ACFとは？</a></li>
+								<li>
+									<?php
+										echo $this->Html->link('ACFとは？', array('controller'=>'pages','action'=>'about'));
+									?>
+									
+								</li>
 							</ul>
 						</nav>
 					</div>

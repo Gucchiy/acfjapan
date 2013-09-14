@@ -374,9 +374,22 @@ div.report_list
 	padding: 15px 0px;
 }
 
-.portfolio-item .item-info .item-title a {
+.portfolio-item .item-info .item-title a 
+{
 	color: #36160E;
 }
 
+div.tab-click
+{
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:40px; 
+	background-color: #D3C1A6; 
+	color:#FFFFFF;
+	text-align: center;
+	padding-top:10px;
+	font-weight: bold	
+}
 
 
