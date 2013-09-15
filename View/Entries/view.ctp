@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+		
 <div class="entries view">
 <h2><?php  echo __('Entry'); ?></h2>
 	<dl>
@@ -14,6 +20,16 @@
 		<dt><?php echo __('Title'); ?></dt>
 		<dd>
 			<?php echo h($entry['Entry']['title']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Image'); ?></dt>
+		<dd>
+			<?php echo h($entry['Entry']['image']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Date'); ?></dt>
+		<dd>
+			<?php echo h($entry['Entry']['date']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Content'); ?></dt>
@@ -81,5 +97,9 @@
 		<ul>
 			<li><?php echo $this->Html->link(__('New Comment'), array('controller' => 'comments', 'action' => 'add')); ?> </li>
 		</ul>
+	</div>
+</div>
+
+
 	</div>
 </div>

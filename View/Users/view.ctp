@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="users view">
 <h2><?php  echo __('User'); ?></h2>
 	<dl>
@@ -253,5 +259,8 @@
 		<ul>
 			<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 		</ul>
+	</div>
+</div>
+
 	</div>
 </div>

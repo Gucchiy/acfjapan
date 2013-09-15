@@ -1,14 +1,17 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
+
 <div class="teams index">
 	<h2><?php echo __('Teams'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('logo'); ?></th>
-			<th><?php echo $this->Paginator->sort('content'); ?></th>
-			<th><?php echo $this->Paginator->sort('content_image'); ?></th>
-			<th><?php echo $this->Paginator->sort('abstract'); ?></th>
-			<th><?php echo $this->Paginator->sort('abstract_image'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -17,11 +20,9 @@
 	<tr>
 		<td><?php echo h($team['Team']['id']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['name']); ?>&nbsp;</td>
-		<td><?php echo h($team['Team']['logo']); ?>&nbsp;</td>
-		<td><?php echo h($team['Team']['content']); ?>&nbsp;</td>
-		<td><?php echo h($team['Team']['content_image']); ?>&nbsp;</td>
-		<td><?php echo h($team['Team']['abstract']); ?>&nbsp;</td>
-		<td><?php echo h($team['Team']['abstract_image']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($team['User']['id'], array('controller' => 'users', 'action' => 'view', $team['User']['id'])); ?>
+		</td>
 		<td><?php echo h($team['Team']['created']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -50,6 +51,8 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Team'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Belongings'), array('controller' => 'belongings', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Belonging'), array('controller' => 'belongings', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
@@ -57,4 +60,7 @@
 		<li><?php echo $this->Html->link(__('List Reports'), array('controller' => 'reports', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Report'), array('controller' => 'reports', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

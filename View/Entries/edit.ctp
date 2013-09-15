@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="entries form">
 <?php echo $this->Form->create('Entry'); ?>
 	<fieldset>
@@ -6,6 +12,8 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('project_id');
 		echo $this->Form->input('title');
+		echo $this->Form->input('image');
+		echo $this->Form->input('date');
 		echo $this->Form->input('content');
 	?>
 	</fieldset>
@@ -22,4 +30,7 @@
 		<li><?php echo $this->Html->link(__('List Comments'), array('controller' => 'comments', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Comment'), array('controller' => 'comments', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

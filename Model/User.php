@@ -67,6 +67,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		/*
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -77,7 +78,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-
+		*/
 
 	);
 
@@ -158,6 +159,19 @@ class User extends AppModel {
 		),
 		'ProjectComment' => array(
 			'className' => 'ProjectComment',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Team' => array(
+			'className' => 'Team',
 			'foreignKey' => 'user_id',
 			'dependent' => false,
 			'conditions' => '',

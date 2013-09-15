@@ -1,23 +1,19 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
+
 <div class="users index">
 	<h2><?php echo __('Users'); ?></h2>
-	<p><?=$fb_me['name']?>さん こんにちは！</p>
-	<img src="https://graph.facebook.com/<?=$fb_me['id']?>/picture">
-	<pre>
-		<?php echo print_r($fb_me); ?>
-	</pre>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('twitter1'); ?></th>
-			<th><?php echo $this->Paginator->sort('twitter2'); ?></th>
 			<th><?php echo $this->Paginator->sort('fbid'); ?></th>
 			<th><?php echo $this->Paginator->sort('fbname'); ?></th>
-			<th><?php echo $this->Paginator->sort('fbtoken'); ?></th>
-			<th><?php echo $this->Paginator->sort('cardnum'); ?></th>
-			<th><?php echo $this->Paginator->sort('belonging_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -27,16 +23,8 @@
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['twitter1']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['twitter2']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['fbid']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['fbname']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['fbtoken']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['cardnum']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($user['Belonging']['id'], array('controller' => 'belongings', 'action' => 'view', $user['Belonging']['id'])); ?>
-		</td>
 		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -74,4 +62,7 @@
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

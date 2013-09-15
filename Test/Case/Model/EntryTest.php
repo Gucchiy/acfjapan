@@ -15,6 +15,14 @@ class EntryTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.entry',
 		'app.project',
+		'app.user',
+		'app.belonging',
+		'app.team',
+		'app.report',
+		'app.investment',
+		'app.participation',
+		'app.aid',
+		'app.project_comment',
 		'app.comment'
 	);
 

@@ -277,6 +277,18 @@ div.project
 {
 	clear:both;
 	width:100%;
+}
+
+div.tab-disp
+{
+	clear:both;
+	width:100%;
+	border: solid 15px #36160E;
+	padding:15px;
+	width:85%;
+	position:relative;
+	margin-top:50px;
+	font-size:15px;
 	
 }
 
@@ -392,4 +404,56 @@ div.tab-click
 	font-weight: bold	
 }
 
+div.tab-team
+{
+	width:120px; 
+	border-right: solid 8px #F08337;	
+	float:left;
+}
 
+div.tab-team-item
+{
+	height:40px;
+	width:115px;
+	font-size: 14px;
+	color:#F08337;
+	text-align: center;
+	padding-top: 5px;
+}
+
+div.tab-team-content
+{
+	width:400px; 
+	float:left;
+	padding-left:15px;
+}
+
+div.tab-team-content-item
+{
+	width:395px; 
+	height:35px;
+	font-size: 14px;
+	padding-top: 10px;
+	line-height: 16px;
+}
+
+div.sidebox
+{
+	background-color:#ffffff;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+div.brown_date
+{
+	float:left; 
+	width:160px; 
+	height:28px; 
+	background-color: #36160E; 
+	font-size:14px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 15px 0px;	
+	text-align:center;
+	clear: both;
+}

@@ -1,5 +1,7 @@
 <?php
 	$now_url = $this->Html->url('',true);	
+	$now_base_url = $this->Html->url(array('controller'=>'projects','action'=>'index'), true);
+	// echo $now_base_url;
 ?>
 
 <!-- Content -->
@@ -49,92 +51,51 @@
 								}		
 							?>
 							</h3>
-							<p>コンテンツ</p>
+							<p><?=$project['User']['introduce']?></p>
 						</div>
 						
 					</div>
 					
 					<div class="fb-like" data-href="<?=$now_url?>" data-send="false" data-width="130" data-show_faces="false" data-font=""></div>
 					
-					<div class="project clearfix">
-						
-						<?php
-							// print_r($project['User']);
-							echo $this->Html->image($project['Project']['image1']);
-							if(strlen($project['Project']['overview'])){
-								echo "<p>".$project['Project']['overview']."</p>";
+					<script>
+						$.ajax({
+							type: "POST",
+							url: "<?=$now_base_url?>"+"/ajax_tab1/"+<?=$project['Project']['id']?>,
+							data: "id=<?=$project['Project']['id']?>",
+							success: function(html){
+								$('#tab_content').html(html);
 							}
-					
-						?>
-						<h2>
-							<?php
-								echo $this->Html->image('title.png');
-							?>
-							&nbsp;&nbsp;事業目標
-						</h2>
-						<P>
-							<?php
-								echo $project['Project']['objective'];
-							?>
-						</P>
-						<?php
-							if(strlen($project['Project']['image2'])){
-								echo $this->Html->image($project['Project']['image2']);
-							}	
-						?>
-						
-						<h2>
-							<?php
-								echo $this->Html->image('title.png');
-							?>
-							&nbsp;&nbsp;主な活動
-						</h2>
-						<P>
-							<?php
-								echo $project['Project']['activity_overview'];
-							?>
-						</P>
-						<h2>
-							<?php
-								echo $this->Html->image('title.png');
-							?>
-							&nbsp;&nbsp;プレイヤーの活動内容
-						</h2>
-						<P>
-							<?php
-								echo $project['Project']['activity'];
-							?>
-						</P>
-						<?php
-							if(strlen($project['Project']['image3'])){
-								echo $this->Html->image($project['Project']['image3']);
-							}							
+						});
 
-							echo $this->Form->create('ProjectComment');
-							echo $this->Form->input('content',array('size'=>'50'));
-							echo $this->Form->end('コメントする');
-							foreach($project['ProjectComment'] as $project_comment ){
-				
-								if(strlen($project_comment['User']['fbid']>2)){
-									
-									echo $this->Html->image("https://graph.facebook.com/{$project_comment['User']['fbid']}/picture");
-								
-								}else{
-									
-									echo $this->Html->image($project_comment['User']['image']);
+
+						function OnTabClick(id){
+							$("#tab1").css('background-color',"#D3C1A6");
+							$("#tab2").css('background-color',"#D3C1A6");
+							$("#tab3").css('background-color',"#D3C1A6");
+							$("#"+id).css('background-color',"#F08337");
+							$.ajax({
+								type: "POST",
+								url: "<?=$now_base_url?>"+"/ajax_"+id+"/"+<?=$project['Project']['id']?>,
+								data: "id=<?=$project['Project']['id']?>",
+								success: function(html){
+									$('#tab_content').html(html);
 								}
-
-
-				//				echo "<img src='https://graph.facebook.com/{$project_comment['User']['fbid']}/picture' />";
-								echo "<p>{$project_comment['content']}</p>";
-				//				print_r($project_comment);
-				//				echo "<p>{$project_comment['ProjectComment']['content']}</p>";
-				//				print_r( $project_comment['User'] );
-							}
-
-
-						?>
+							});
+							// $('#tab_content').html(tab_content[id]);
+						}
 						
+					</script>					
+					
+					<div class="tab-disp clearfix">
+						<div class="tab-click" style="background-color: #F08337;" id="tab1" onclick="OnTabClick('tab1')">HOME</div>
+						<div class="tab-click" style="left:150px;font-size:12px;padding-top:12px;height:38px;line-height: 13px" id="tab2" onclick="OnTabClick('tab2')">プランナー<br />活動日記</div>
+						<?php if($project['Project']['type']==2 ){ ?>
+							<div class="tab-click" style="left:285px;font-size:12px;padding-top:12px;height:38px;line-height: 13px" id="tab3" onclick="OnTabClick('tab3')">プレイヤー<br />スタディツアー</div>
+						<?php }	?>
+						<div id="tab_content">
+						
+						</div>
 					</div>
 
 				</div>

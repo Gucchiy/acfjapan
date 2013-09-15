@@ -1,3 +1,11 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
+
+
 <div class="projects index">
 	<h2><?php echo __('Projects'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -71,4 +79,7 @@
 		<li><?php echo $this->Html->link(__('List Participations'), array('controller' => 'participations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Participation'), array('controller' => 'participations', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

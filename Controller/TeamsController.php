@@ -7,6 +7,9 @@ App::uses('AppController', 'Controller');
  */
 class TeamsController extends AppController {
 
+	public $uses = array('Team','Project', 'User');
+
+
 /**
  * index method
  *
@@ -15,6 +18,8 @@ class TeamsController extends AppController {
 	public function index() {
 		$this->Team->recursive = 0;
 		$this->set('teams', $this->paginate());
+		$users = $this->Project->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**
@@ -47,6 +52,8 @@ class TeamsController extends AppController {
 				$this->Session->setFlash(__('The team could not be saved. Please, try again.'));
 			}
 		}
+		$users = $this->Project->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**
@@ -57,6 +64,7 @@ class TeamsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+
 		if (!$this->Team->exists($id)) {
 			throw new NotFoundException(__('Invalid team'));
 		}
@@ -71,6 +79,8 @@ class TeamsController extends AppController {
 			$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
 			$this->request->data = $this->Team->find('first', $options);
 		}
+		$users = $this->Project->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**

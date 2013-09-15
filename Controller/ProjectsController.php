@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class ProjectsController extends AppController {
 	
-	public $uses = array('Project','ProjectComment','User');
+	public $uses = array('Project','ProjectComment','User','Entry');
 
 /**
  * index method
@@ -113,5 +113,27 @@ class ProjectsController extends AppController {
 		}
 		$this->Session->setFlash(__('Project was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	public function ajax_tab1($id){
+		
+		$this->layout = 'ajax';
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$this->set('project', $this->Project->find('first', $options));
+
+	}
+
+	public function ajax_tab2($id){
+		
+		$this->layout = 'ajax';
+		$this->Entry->recursive = 0;
+		$options = array('conditions'=>array('Entry.project_id'=>$id));
+		$this->set('entries', $this->Entry->find('all', $options));
+	}
+
+	public function ajax_tab3($id){
+		
+		$this->layout = 'ajax';
 	}
 }

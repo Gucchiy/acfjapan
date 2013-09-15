@@ -1,3 +1,8 @@
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
@@ -6,6 +11,8 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('email');
 		echo $this->Form->input('username');
+		echo $this->Form->input('image');
+		echo $this->Form->input('introduce');
 		echo $this->Form->input('password');
 		echo $this->Form->input('twitter1');
 		echo $this->Form->input('twitter2');
@@ -33,4 +40,7 @@
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="entries index">
 	<h2><?php echo __('Entries'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -5,7 +11,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('project_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
-			<th><?php echo $this->Paginator->sort('content'); ?></th>
+			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -17,7 +23,7 @@
 			<?php echo $this->Html->link($entry['Project']['title'], array('controller' => 'projects', 'action' => 'view', $entry['Project']['id'])); ?>
 		</td>
 		<td><?php echo h($entry['Entry']['title']); ?>&nbsp;</td>
-		<td><?php echo h($entry['Entry']['content']); ?>&nbsp;</td>
+		<td><?php echo h($entry['Entry']['date']); ?>&nbsp;</td>
 		<td><?php echo h($entry['Entry']['created']); ?>&nbsp;</td>
 		<td><?php echo h($entry['Entry']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -51,4 +57,7 @@
 		<li><?php echo $this->Html->link(__('List Comments'), array('controller' => 'comments', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Comment'), array('controller' => 'comments', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>
