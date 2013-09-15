@@ -1,6 +1,4 @@
 <?php
-?>
-<?php
 	foreach( $entries as $entry ){
 		
 		$date = date( "Y年n月j日", strtotime($entry['Entry']['date']) );
@@ -13,3 +11,9 @@
 		echo "<p style='clear:both;'>".$entry['Entry']['content']."</p>";
 	}
 ?>
+<div class="tab-under">
+<?php
+	echo $this->Html->image('button.png', array('url'=>'#'));
+?>
+</div>
+

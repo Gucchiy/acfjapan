@@ -47,6 +47,7 @@ class Project extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		/*
 		'content' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -56,7 +57,7 @@ class Project extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'want_ammount' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),

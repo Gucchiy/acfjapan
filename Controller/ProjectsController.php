@@ -135,5 +135,8 @@ class ProjectsController extends AppController {
 	public function ajax_tab3($id){
 		
 		$this->layout = 'ajax';
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$this->set('project', $this->Project->find('first', $options));
 	}
 }

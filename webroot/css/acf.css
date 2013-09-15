@@ -457,3 +457,43 @@ div.brown_date
 	text-align:center;
 	clear: both;
 }
+
+div.tour-item
+{
+	width:100%;
+	padding: 10px;
+	color:#36160E	
+}
+
+div.tour_item img
+{
+	float:left;
+	clear:left;	
+}
+
+div.tour-item-inside-left
+{
+	float:left;
+	background-color: #E9E4D9;
+	width: 150px;
+	height:24px;
+	font-size:14px;
+	margin:0px 20px;
+	text-align: center; 
+}
+
+div.tour-item-inside
+{
+	float:left;
+	font-size:14px;
+	width:300px;
+}
+
+div.tab-under
+{
+	width: 107%;
+	background-color: #36160E;
+	text-align: center;
+	margin: 0px 0px -15px -15px;
+	padding: 20px 0px;
+}

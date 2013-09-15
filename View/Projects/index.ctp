@@ -14,7 +14,6 @@
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('team_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
-			<th><?php echo $this->Paginator->sort('content'); ?></th>
 			<th><?php echo $this->Paginator->sort('want_ammount'); ?></th>
 			<th><?php echo $this->Paginator->sort('deadline'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
@@ -34,7 +33,6 @@
 			<?php echo $this->Html->link($project['Team']['name'], array('controller' => 'teams', 'action' => 'view', $project['Team']['id'])); ?>
 		</td>
 		<td><?php echo h($project['Project']['title']); ?>&nbsp;</td>
-		<td><?php echo h($project['Project']['content']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['want_ammount']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['deadline']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['status']); ?>&nbsp;</td>
