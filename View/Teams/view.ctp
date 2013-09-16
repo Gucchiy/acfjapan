@@ -70,8 +70,12 @@
 
 					<?php
 						$tab1_content_inside = "<h2 style='border-bottom: solid 2px #F08337; padding-bottom: 15px;'>".$team['Team']['name']."</h2>"
-							."<p>".htmlspecialchars($team['Team']['content'])."</p>"
-							.$this->Html->image($team['Team']['content_image']);
+							."<p>".htmlspecialchars($team['Team']['content'])."</p>";
+							
+						if(strlen($team['Team']['content_image'])>2){
+							$tab1_content_inside .= $this->Html->image($team['Team']['content_image']);
+							
+						}
 					
 						$tab1_content = addslashes( $tab1_content_inside );
 
@@ -121,25 +125,32 @@ HERE
 					<script>
 						
 						tab_content = {
-							'#tab1':"<?=$tab1_content?>",
-							'#tab2':"<?=$tab2_content?>",
-							'#tab3':"comming soon"
+							'tab1':"<?=$tab1_content?>",
+							'tab2':"<?=$tab2_content?>",
+							'tab3':"comming soon"
 						}
+						
 					
 						function OnTabClick(id){
-							$("#tab1").css('background-color',"#D3C1A6");
-							$("#tab2").css('background-color',"#D3C1A6");
-							$("#tab3").css('background-color',"#D3C1A6");
-							$(id).css('background-color',"#F08337");
+							
+							for(i=1; i <= 3; i++ ){
+								
+								$("#tab"+i+"a").css("visibility","hidden");
+							}
+							
+							$("#"+id+"a").css("visibility","visible");
 							$('#tab_content').html(tab_content[id]);
 						}
 						
 					</script>					
 					
 					<div class="tab-disp clearfix" >
-						<div class="tab-click" style="background-color: #F08337;" id="tab1" onclick="OnTabClick('#tab1')">ご挨拶</div>
-						<div class="tab-click" style="left:150px;" id="tab2" onclick="OnTabClick('#tab2')">組織概要</div>
-						<div class="tab-click" style="left:285px;font-size:12px;padding-top:12px;height:38px;line-height: 13px" id="tab3" onclick="OnTabClick('#tab3')">これまでの<br />プロジェクト</div>
+						<div class="tab-click-tab1-team" id="tab1" onclick="OnTabClick('tab1')"></div>
+						<div class="tab-click-tab2-team" id="tab2" onclick="OnTabClick('tab2')"></div>
+						<div class="tab-click-tab3-team" id="tab3" onclick="OnTabClick('tab3')"></div>
+						<div class="tab-click-tab1-team-a" id="tab1a" onclick="OnTabClick('tab1')"></div>
+						<div class="tab-click-tab2-team-a" id="tab2a" onclick="OnTabClick('tab2')"></div>
+						<div class="tab-click-tab3-team-a" id="tab3a" onclick="OnTabClick('tab3')"></div>
 						<div id="tab_content">
 							<?=$tab1_content_inside?>
 						</div>
@@ -148,7 +159,7 @@ HERE
 					</div>
 
 				</div>
-
+				
 				<div class="five columns" id="rightside">
 
 					<div id="item_info_side" class="clearfix">

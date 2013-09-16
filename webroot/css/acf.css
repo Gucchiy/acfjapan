@@ -391,18 +391,257 @@ div.report_list
 	color: #36160E;
 }
 
-div.tab-click
+a.tab-click
 {
+	display:block-inline;
+
 	position:absolute; 
 	top: -50px; 
 	width:120px; 
 	height:40px; 
-	background-color: #D3C1A6; 
+	background-color: #D3C1A6;
 	color:#FFFFFF;
 	text-align: center;
 	padding-top:10px;
 	font-weight: bold	
 }
+
+a.tab-click:hover
+{
+	display:block;
+
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:40px; 
+	background-color: #ffffff;
+	color:#FFFFFF;
+	text-align: center;
+	padding-top:10px;
+	font-weight: bold	
+}
+
+a.tab-click:active
+{
+	display:block;
+
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:40px; 
+	background-color: #ff0000;
+	color:#FFFFFF;
+	text-align: center;
+	padding-top:10px;
+	font-weight: bold	
+}
+
+div.tab-disp div.tab-click-tab1-prj
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	background-image: url('../img/prj-tab1.jpg')	
+}
+
+div.tab-disp div.tab-click-tab1-prj-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	background-image: url('../img/prj-tab1-a.jpg');
+	visibility: visible;
+}
+
+div.tab-disp div.tab-click-tab1-prj:hover
+{
+	background-image: url('../img/prj-tab1-h.jpg')	
+}
+
+div.tab-disp div.tab-click-tab1-prj:active
+{
+	background-image: url('../img/prj-tab1-a.jpg')	
+}
+
+div.tab-disp div.tab-click-tab2-prj
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:150px;
+	background-image: url('../img/prj-tab2.jpg');
+}
+
+div.tab-disp div.tab-click-tab2-prj-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:150px;
+	background-image: url('../img/prj-tab2-a.jpg');
+	visibility: hidden;
+}
+
+div.tab-disp div.tab-click-tab2-prj:hover
+{
+	background-image: url('../img/prj-tab2-h.jpg')	;
+}
+
+div.tab-disp div.tab-click-tab2-prj:active
+{
+	background-image: url('../img/prj-tab2-a.jpg')	;
+}
+
+div.tab-disp div.tab-click-tab3-prj
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:285px;
+	background-image: url('../img/prj-tab3.jpg')	
+}
+
+div.tab-disp div.tab-click-tab3-prj-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:285px;
+	background-image: url('../img/prj-tab3-a.jpg');
+	visibility: hidden;
+}
+
+div.tab-disp div.tab-click-tab3-prj:hover
+{
+	background-image: url('../img/prj-tab3-h.jpg');
+}
+
+div.tab-disp div.tab-click-tab3-prj:active
+{
+	background-image: url('../img/prj-tab3-a.jpg');
+}
+
+div.tab-disp div.tab-click-tab1-team
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	background-image: url('../img/team-tab1.jpg')	
+}
+
+div.tab-disp div.tab-click-tab1-team-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	background-image: url('../img/team-tab1-a.jpg');
+	visibility: visible;
+}
+
+div.tab-disp div.tab-click-tab1-team:hover
+{
+	background-image: url('../img/team-tab1-h.jpg')	
+}
+
+div.tab-disp div.tab-click-tab1-team:active
+{
+	background-image: url('../img/team-tab1-a.jpg')	
+}
+
+div.tab-disp div.tab-click-tab2-team
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:150px;
+	background-image: url('../img/team-tab2.jpg');
+}
+
+div.tab-disp div.tab-click-tab2-team-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:150px;
+	background-image: url('../img/team-tab2-a.jpg');
+	visibility: hidden;
+}
+
+div.tab-disp div.tab-click-tab2-team:hover
+{
+	background-image: url('../img/team-tab2-h.jpg')	;
+}
+
+div.tab-disp div.tab-click-tab2-team:active
+{
+	background-image: url('../img/team-tab2-a.jpg')	;
+}
+
+div.tab-disp div.tab-click-tab3-team
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:285px;
+	background-image: url('../img/team-tab3.jpg')	
+}
+
+div.tab-disp div.tab-click-tab3-team-a
+{
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: -50px; 
+	width:120px; 
+	height:50px; 
+	left:285px;
+	background-image: url('../img/team-tab3-a.jpg');
+	visibility: hidden;
+}
+
+div.tab-disp div.tab-click-tab3-team:hover
+{
+	background-image: url('../img/team-tab3-h.jpg');
+}
+
+div.tab-disp div.tab-click-tab3-team:active
+{
+	background-image: url('../img/team-tab3-a.jpg');
+}
+
 
 div.tab-team
 {
@@ -496,4 +735,9 @@ div.tab-under
 	text-align: center;
 	margin: 0px 0px -15px -15px;
 	padding: 20px 0px;
+}
+
+.header .brand .logo img {
+	max-height: 76px;
+	max-width: 215px;
 }

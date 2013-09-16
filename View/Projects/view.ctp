@@ -86,10 +86,12 @@
 
 
 						function OnTabClick(id){
-							$("#tab1").css('background-color',"#D3C1A6");
-							$("#tab2").css('background-color',"#D3C1A6");
-							$("#tab3").css('background-color',"#D3C1A6");
-							$("#"+id).css('background-color',"#F08337");
+							for(i=1; i <= 3; i++ ){
+								
+								$("#tab"+i+"a").css("visibility","hidden");
+							}
+							
+							$("#"+id+"a").css("visibility","visible");
 							$.ajax({
 								type: "POST",
 								url: "<?=$now_base_url?>"+"/ajax_"+id+"/"+<?=$project['Project']['id']?>,
@@ -104,10 +106,13 @@
 					</script>					
 					
 					<div class="tab-disp clearfix">
-						<div class="tab-click" style="background-color: #F08337;" id="tab1" onclick="OnTabClick('tab1')">HOME</div>
-						<div class="tab-click" style="left:150px;font-size:12px;padding-top:12px;height:38px;line-height: 13px" id="tab2" onclick="OnTabClick('tab2')">プランナー<br />活動日記</div>
+						<div class="tab-click-tab1-prj" id="tab1" onclick="OnTabClick('tab1')"></div>
+						<div class="tab-click-tab2-prj" id="tab2" onclick="OnTabClick('tab2')"></div>
+						<div class="tab-click-tab1-prj-a" id="tab1a" onclick="OnTabClick('tab1')"></div>
+						<div class="tab-click-tab2-prj-a" id="tab2a" onclick="OnTabClick('tab2')"></div>
 						<?php if($project['Project']['type']==2 ){ ?>
-							<div class="tab-click" style="left:285px;font-size:12px;padding-top:12px;height:38px;line-height: 13px" id="tab3" onclick="OnTabClick('tab3')">プレイヤー<br />スタディツアー</div>
+							<div class="tab-click-tab3-prj"  id="tab3" onclick="OnTabClick('tab3')"></div>
+							<div class="tab-click-tab3-prj-a"  id="tab3a" onclick="OnTabClick('tab3')"></div>
 						<?php }	?>
 						<div id="tab_content">
 						

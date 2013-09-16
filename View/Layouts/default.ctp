@@ -237,7 +237,7 @@ $root_url = $this->Html->url('/',true);
 					<div class="one-third column">
 						<div class="footer-logo">
 							<?php
-								echo $this->Html->image('footer-logo.png', array('style'=>"width: 70px;", 'alt'=>'Youxi'));
+								echo $this->Html->image('footer-logo.png', array('style'=>"width: 125px;", 'alt'=>'ACF'));
 							?>
 						</div>
 						<p>ACFアジア・クラウド・ファンディングでは、女性ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
@@ -275,7 +275,6 @@ $root_url = $this->Html->url('/',true);
 								echo $this->Html->link('お問い合わせ',array('controller'=>'pages','action'=>'contact'));
 							?>
 							</li>
-							<li><a href="#">Q＆A</a></li>
                             
 					  </ul>
 						<div class="tweets" data-twitter-username="envato" data-count="2"></div>
