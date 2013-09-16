@@ -255,11 +255,27 @@ $root_url = $this->Html->url('/',true);
 					<div class="one-third column">
 						<h4>MENU</h4>
                         <ul class="footer-nav">
-							<li><a href="index.html">企画する</a></li>
-							<li><a href="portfolio-3.html">参加する</a></li>
-                            <li><a href="portfolio-3.html">応援する</a></li>
-							<li><a href="blog.html">お問い合わせ</a></li>
-							<li><a href="contact.html">Q＆A</a></li>
+							<li>
+							<?php
+								echo $this->Html->link('企画する',array('controller'=>'pages','action'=>'planner'));
+							?>
+							</li>
+							<li>
+							<?php
+								echo $this->Html->link('参加する',array('controller'=>'pages','action'=>'player'));
+							?>
+							</li>
+							<li>
+							<?php
+								echo $this->Html->link('応援する',array('controller'=>'pages','action'=>'partner'));
+							?>
+							</li>
+							<li>
+							<?php
+								echo $this->Html->link('お問い合わせ',array('controller'=>'pages','action'=>'contact'));
+							?>
+							</li>
+							<li><a href="#">Q＆A</a></li>
                             
 					  </ul>
 						<div class="tweets" data-twitter-username="envato" data-count="2"></div>
@@ -270,7 +286,7 @@ $root_url = $this->Html->url('/',true);
 			<div class="footer-bottom">
 				<div class="container">
 					<div class="seven columns">
-						Copyright <a href="http://www.youxithemes.com">ACF</a>. All Rights Reserved.
+						Copyright <a href="http://acfjapan.com/">ACF</a>. All Rights Reserved.
 					</div>
 					<div class="nine columns">
 						<ul class="footer-nav">
