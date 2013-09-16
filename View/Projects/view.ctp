@@ -1,11 +1,27 @@
 <?php
 	$now_url = $this->Html->url('',true);	
 	$now_base_url = $this->Html->url(array('controller'=>'projects','action'=>'index'), true);
+	$root_url = $this->Html->url("/");
 	// echo $now_base_url;
 ?>
 
 <!-- Content -->
 <div class="content">
+
+	<!-- Page Header -->
+	<div class="page-header">
+		<div class="container">
+			<div class="sixteen columns">
+				<h1 class="page-title">
+					PROJECT
+				</h1>
+				<ul class="breadcrumb">
+					<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
+					<li class="active">PROJECT</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 	<!-- Start Content -->
 	<div class="container main">
