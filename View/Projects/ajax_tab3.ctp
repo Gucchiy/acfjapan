@@ -6,7 +6,8 @@
 </h2>
 <p><?=$project['Project']['tour_abstract']?></p>
 <?php
-	echo $this->Html->image($project['Project']['tour_image'], array('style'=>'clear:both;'));
+	if(strlen($project['Project']['tour_image']) > 2 )
+		echo $this->Html->image($project['Project']['tour_image'], array('style'=>'clear:both;'));
 ?>
 
 <div class="tour-item clearfix">

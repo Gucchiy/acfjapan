@@ -46,7 +46,7 @@
 						</div>
 						<div class="data">
 							<h3><?=$team['User']['fbname']?></h3>
-							<p>コンテンツ</p>
+							<p><?=$team['User']['introduce']?></p>
 						</div>
 						
 					</div>
