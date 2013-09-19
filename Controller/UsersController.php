@@ -147,7 +147,8 @@ class UsersController extends AppController {
     function callback_facebook(){  
 
 		// $this->autoRender = false;  
-		       
+		$this->layout = 'ajax';
+				       
         $uid = $this->facebook->getUser();  
         $me = null;  
         

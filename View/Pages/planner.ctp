@@ -19,7 +19,7 @@
 				<div class="container">
 					<div class="sixteen columns">
 						<h1 class="page-title">
-							PLANNER
+							PLANNER <span>Designing for the future!</span>
 						</h1>
 						<ul class="breadcrumb">
 							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>

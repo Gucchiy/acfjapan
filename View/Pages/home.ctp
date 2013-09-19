@@ -64,16 +64,18 @@
 
 						$disp_data = $disp_data_array[$i-1];
 						if(strlen($disp_data)>2){
+							// <div class="ls-s-1"
+							// style="overflow:hidden; left: 0; top: 350px; font-size: 18px; padding:10px; line-height: 25px; white-space: nowrap; color: #E9E4D9; background-color: #36160E"
 
 				    ?>
 						<div class="ls-s-1"
-							style="overflow:hidden; left: 0; top: 350px; font-size: 18px; padding:10px; line-height: 25px; white-space: nowrap; color: #E9E4D9; background-color: #36160E"
+							style="	width:50%;overflow:hidden;left: 0; top: 350px; font-size: 18px; padding:10px; line-height: 25px; color: #E9E4D9; background-color: #36160E;filter: alpha(opacity=50); -moz-opacity:0.50; opacity:0.50;"
 							rel="delayin: 500; slidedirection: fade; slideoutdirection: fade;">
 							<?php										
-								// echo $disp_data;
-								echo mb_substr($disp_data,0,45).'<br />';
-								echo mb_substr($disp_data,46,45).'<br />';
-								echo mb_substr($disp_data,91,44).'…';
+								echo $disp_data;
+								// echo mb_substr($disp_data,0,45).'<br />';
+								// echo mb_substr($disp_data,46,45).'<br />';
+								// echo mb_substr($disp_data,91,44).'…';
 							?>
 						</div>
 					<?php
@@ -87,7 +89,6 @@
 			</div>
 		</div>
 		<!-- End Slider Wrap -->
-
 		<!-- Content -->
 		<div class="content">
 

@@ -75,12 +75,12 @@ div.item-info div.if_reach
 	padding: 5px 0px 5px 10px;
 }
 
-div.item-info div.spacial
+div.item-info div.special
 {
 	font-size:15px; 
 	font-weight: bold;
 	color:#F08337;
-	margin:0px 0px 5px 10px;
+	margin: 0px 0px 5px 10px;
 }
 
 div.hart_progress
@@ -114,6 +114,7 @@ div#item_info_side
 	margin:5%;
 	width:90%;
 	position:relative;
+	color: #7A6058;
 }
 
 div#item_info_side div.hart_progress
@@ -212,7 +213,8 @@ div.container.main div.user_info div.data
 {
 	background-color:#E9E4D9;
 	width:75%;
-	height:80px;
+	min-height:86px;
+	
 	margin:0px 0px 0px 15px;
 	float:left;
 	padding: 10px;
@@ -289,6 +291,7 @@ div.tab-disp
 	position:relative;
 	margin-top:50px;
 	font-size:15px;
+	color: #7A6058;
 	
 }
 
@@ -740,4 +743,18 @@ div.tab-under
 .header .brand .logo img {
 	max-height: 76px;
 	max-width: 215px;
+}
+
+form .submit input[type=submit] {
+	background:#62af56;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#B2D362), to(#8EC31F));
+	background-image: -webkit-linear-gradient(top, #B2D362, #8EC31F);
+	background-image: -moz-linear-gradient(top, #B2D362, #8EC31F);
+	border-color: #2d6324;
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+	padding: 8px 10px;
+}
+form .submit input[type=submit]:hover {
+	background: #B2D362;
 }

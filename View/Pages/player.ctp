@@ -19,7 +19,7 @@
 				<div class="container">
 					<div class="sixteen columns">
 						<h1 class="page-title">
-							PLAYER
+							PLAYER <span>Join our study tour for a life like experience!</span>
 						</h1>
 						<ul class="breadcrumb">
 							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>

@@ -17,7 +17,7 @@
 		<div class="container">
 			<div class="sixteen columns">
 				<h1 class="page-title">
-					Member <span>join our awesome team to get many benefits</span>
+					Member <span>Join our awesome team with many benefits!</span>
 				</h1>
 				<ul class="breadcrumb">
 					<?php

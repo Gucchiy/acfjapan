@@ -58,7 +58,7 @@
 　　　　　
 			<div class="row">
 
-					<div class="one-third column">
+					<div class="five columns">
 						<div class="job-position">
 							<h3 class="job-title">プロジェクトを「応援」する</h3>
 							<span class="job-code">パートナー: <span>特典を購入して応援できる</span></span>
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 
-					<div class="one-third column">
+					<div class="five columns">
 						<div class="job-position">
 							<h3 class="job-title">プロジェクトに「参加」する</h3>
 							<span class="job-code">プレイヤー: <span>現地のスタディーツアーに参加して学べる</span></span>
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 
-					<div class="one-third column">
+					<div class="five columns">
 						<div class="job-position">
 							<h3 class="job-title">プロジェクトを「企画」する</h3>
 							<span class="job-code">プランナー: <span>目標金額達成に必要なプロジェクトを企画できる</span></span>

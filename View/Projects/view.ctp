@@ -100,7 +100,6 @@
 									$('#tab_content').html(html);
 								}
 							});
-							// $('#tab_content').html(tab_content[id]);
 						}
 						
 					</script>					
@@ -160,7 +159,8 @@
 						<br />
 						<div class="col-btn">
 							<?php
-								echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$project['Project']['id']), array('class'=>'btn'));
+								echo $this->Html->image('button.png', array('url'=>'#'));							
+								// echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$project['Project']['id']), array('class'=>'btn'));
 							?>
 						</div>
 						<h3 style="margin-top:50px;">
