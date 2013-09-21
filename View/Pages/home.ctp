@@ -96,20 +96,20 @@
 		  <div class="highlight"><div class="container">
 		  <?php
 		  
-		  		$disp_num = rand(0, count($projects)-1);
-				$disp_project = $projects[$disp_num];		  
+		  		// $disp_num = rand(0, count($projects)-1);
+				// $disp_project = $projects[$disp_num];		  
 		  ?>
 		  	
 		  	
 					<div class="sixteen columns">
 						<div class="highlight-inner">
 							<div class="col-text">
-								<h2 class="headline"><span class="accent">新着情報</span>：NEWS　<?=$disp_project['Project']['title']?></h2>
-								<p><?=mb_substr($disp_project['Project']['objective'],0,90)?>...</p>
+								<h2 class="headline"><span class="accent">新着情報</span>：NEWS　<?=$news['New']['title']?></h2>
+								<p><?=$news['New']['content']?></p>
 						  </div>
 							<div class="col-btn">
 								<?php
-									echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$disp_project['Project']['id']), array('class'=>'btn'));
+									// echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$disp_project['Project']['id']), array('class'=>'btn'));
 								?>
 							</div>
 						</div>

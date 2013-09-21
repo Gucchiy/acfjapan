@@ -44,7 +44,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Project','Report');
+	public $uses = array('Project','Report','New','Contact','ContactSubject');
 
 /**
  * Displays a view
@@ -71,7 +71,7 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		if($path[0]=='home' || $path[0]=='partner'){
+		if($path[0]=='home'){
 			
 			$this->Project->recursive = 0;
 			$options = array('status'=>'1');
@@ -81,6 +81,10 @@ class PagesController extends AppController {
 			$this->Report->recursive = 2;
 			$reports = $this->Report->find('all', array('conditions'=>$options, 'limit'=>'6'));
 			$this->set('reports',$reports);
+			
+			$this->New->recursive = 0;
+			$news = $this->New->find('first',array('order'=>'modified desc'));
+			$this->set('news',$news);
 				
 		}else if($path[0]=='player'){
 
@@ -89,8 +93,55 @@ class PagesController extends AppController {
 			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
 			$this->set('projects', $projects);
 			
-		}
+		}else if($path[0]=='partner'){
 
+			$this->Project->recursive = 0;
+			$options = array('status'=>'1');
+			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
+			$this->set('projects', $projects);
+			
+		}else if($path[0]=='contact'){
+
+			if ($this->request->is('post') || $this->request->is('put')) {
+				
+				// print_r($this->request->data);
+				
+				if(!$this->request->data['Contact']['contact_subject_id']){
+					
+					$this->Session->setFlash(__('概要をお選びください。'));
+					
+				}else{
+										
+					if ($this->Contact->save($this->request->data)) {
+
+						$options = array('id'=>$this->request->data['Contact']['contact_subject_id']);
+						$subject = $this->ContactSubject->find('first', array('conditions'=>$options ));
+
+
+						$this->Session->setFlash(__('お問い合わせを受け付けました。'));
+						$email = "mail@acfjapan.com";
+						$mail_subject = "ACFへのお問い合わせが到着しました";
+						$mail_message =
+							"お名前：".$this->request->data['Contact']['name']."さん\n".
+							"メールアドレス：".$this->request->data['Contact']['email']."\n".
+							"概要：".$subject['ContactSubject']['value']."\n".
+							"コメント：\n".$this->request->data['Contact']['comment'];
+							
+						// echo $mail_message;
+				
+						mb_send_mail( $email, $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+
+						$this->redirect(array('action' => 'index'));
+
+					} else {
+
+						$this->Session->setFlash(__('The project could not be saved. Please, try again.'));
+					}
+				}
+			}
+			$contactSubjects = $this->Contact->ContactSubject->find('list');
+			$this->set(compact('contactSubjects'));
+		}
 
 		$this->render(implode('/', $path));
 	}
