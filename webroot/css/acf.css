@@ -755,6 +755,11 @@ form .submit input[type=submit] {
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
 	padding: 8px 10px;
 }
+
 form .submit input[type=submit]:hover {
 	background: #B2D362;
+}
+
+div.view dd {
+	margin-left:120px;
 }

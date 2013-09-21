@@ -50,9 +50,12 @@
 					<?php 
 						echo $this->Form->create('User',array('onsubmit'=>'return OnSubmit()','name'=>'userAddForm'));
 						
-						echo $this->Form->input('agree', array('type'=>'checkbox','label'=>'<a href="#">利用規約</a>に同意する','div'=>'input checkbox required','name'=>'agree'));
-						
-						echo $this->Form->end(__('新規登録')); ?>
+						$link_str = $this->Html->link('利用規約',array('controller'=>'pages','action'=>'terms'),array('target'=>'_blank'));
+						echo $this->Form->input('agree', array('type'=>'checkbox','label'=>$link_str.'に同意する','div'=>'input checkbox required','name'=>'agree'));
+
+						echo "※登録時に許可なく投稿されることはありません。";
+						echo $this->Form->end(__('新規登録')); 
+					?>
 					</fieldset>
 
 				</div>

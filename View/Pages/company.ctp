@@ -1,3 +1,9 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
+
+
 <!-- もし追加のスタイルシートがあれば -->
 <style>
 
@@ -17,7 +23,7 @@
 							Company
 						</h1>
 						<ul class="breadcrumb">
-							<li><a href="#">Home</a> <span class="divider">&raquo;</span></li>
+							<li><a href="<?=$root_url?>">Home</a> <span class="divider">&raquo;</span></li>
 							<li class="active">Company</li>
 						</ul>
 					</div>

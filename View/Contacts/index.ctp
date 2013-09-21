@@ -12,7 +12,6 @@
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('contact_subject_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('comment'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -25,7 +24,6 @@
 		<td>
 			<?php echo $this->Html->link($contact['ContactSubject']['value'], array('controller' => 'contact_subjects', 'action' => 'view', $contact['ContactSubject']['id'])); ?>
 		</td>
-		<td><?php echo h($contact['Contact']['comment']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['created']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['modified']); ?>&nbsp;</td>
 		<td class="actions">

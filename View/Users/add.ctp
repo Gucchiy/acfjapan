@@ -81,6 +81,7 @@
 						echo '<br /><br />';
 						echo $this->Form->input('agree', array('type'=>'checkbox','label'=>'<a href="#">利用規約</a>に同意する','div'=>'input checkbox required','name'=>'agreefb'));
 					?>
+					※登録時に許可なく投稿されることはありません。
 					</fieldset></form>
 
 					<fieldset style="margin-top: 10px;">

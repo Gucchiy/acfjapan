@@ -133,8 +133,13 @@ class AppController extends Controller {
 				
 				$user_data = $this->User->find('first',
 					array('conditions'=>array('fbid'=>$this->fb_me['id'])));
-				$this->user_id = $user_data['User']['id'];
-				$this->Session->write('user_id', $this->user_id );
+				
+				if(isset($user_data['User'])){
+
+					$this->user_id = $user_data['User']['id'];
+					$this->Session->write('user_id', $this->user_id );
+					
+				}
 			}
 			
 			$this->user_data = array('User'=>

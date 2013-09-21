@@ -1,3 +1,9 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
+
+
 <style>
 
 </style>
@@ -16,7 +22,7 @@
 							CONTACT
 						</h1>
 						<ul class="breadcrumb">
-							<li><a href="#">TOP</a> <span class="divider">&raquo;</span></li>
+							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
 							<li class="active">CONTACT</li>
 						</ul>
 					</div>
