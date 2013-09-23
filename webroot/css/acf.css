@@ -284,7 +284,6 @@ div.project
 div.tab-disp
 {
 	clear:both;
-	width:100%;
 	border: solid 15px #36160E;
 	padding:15px;
 	width:85%;
@@ -762,4 +761,279 @@ form .submit input[type=submit]:hover {
 
 div.view dd {
 	margin-left:120px;
+}
+
+@media only screen and (max-width: 767px) {
+
+	a.newuser
+	{
+		width:50px; 
+		height:20px; 
+		background-color: #36160E; 
+		font-size:10px; 
+		color: #ffffff; 
+		padding:0px; 
+		margin: 0px;	
+		text-align:center;
+		display:block;
+		position:absolute;
+		top:3px;
+		right:60%;
+		font-weight: normal;
+	}
+	
+	a.login
+	{
+		width:50px; 
+		height:20px; 
+		background-color: #F08337; 
+		font-size:10px; 
+		color: #ffffff; 
+		padding:0px; 
+		margin: 0px;	
+		text-align:center;
+		display:block;
+		position:absolute;
+		top:3px;
+		right:40%;
+		font-weight: normal;
+	}
+	
+	a.fblogin
+	{
+		width:100px; 
+		height:20px; 
+		background-color: #3B5998; 
+		font-size:10px; 
+		color: #ffffff; 
+		padding:0px; 
+		margin: 0px;	
+		text-align:center;
+		display:block;
+		position:absolute;
+		top:3px;
+		right:3%;
+		font-weight: normal;
+	}
+
+	div.tab-disp
+	{
+		clear:both;
+		width:87%;
+		border: solid 5px #36160E;
+		padding:15px;
+		position:relative;
+		margin-top:50px;
+		font-size:15px;
+		color: #7A6058;
+		
+	}
+
+	div.tab-under
+	{
+		width: 112%;
+		background-color: #36160E;
+		text-align: center;
+		margin: 0px 0px -15px -15px;
+		padding: 20px 0px;
+	}
+
+	div.tab-disp div.tab-click-tab1-prj
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		background-size: cover;
+		background-image: url('../img/prj-tab1.jpg')	
+	}
+	
+	div.tab-disp div.tab-click-tab1-prj-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		background-image: url('../img/prj-tab1-a.jpg');
+		background-size: cover;
+		visibility: visible;
+	}
+		
+	div.tab-disp div.tab-click-tab2-prj
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:95px;
+		background-image: url('../img/prj-tab2.jpg');
+		background-size: cover;
+	}
+	
+	div.tab-disp div.tab-click-tab2-prj-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:95px;
+		background-image: url('../img/prj-tab2-a.jpg');
+		background-size: cover;
+		visibility: hidden;
+	}
+		
+	div.tab-disp div.tab-click-tab3-prj
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:175px;
+		background-image: url('../img/prj-tab3.jpg');
+		background-size: cover;
+	}
+	
+	div.tab-disp div.tab-click-tab3-prj-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:175px;
+		background-image: url('../img/prj-tab3-a.jpg');
+		background-size: cover;
+		visibility: hidden;
+	}
+		
+	div.tab-disp div.tab-click-tab1-team
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		background-image: url('../img/team-tab1.jpg');
+		background-size: cover;
+	}
+	
+	div.tab-disp div.tab-click-tab1-team-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		background-image: url('../img/team-tab1-a.jpg');
+		background-size: cover;
+		visibility: visible;
+	}
+	
+	div.tab-disp div.tab-click-tab2-team
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:95px;
+		background-image: url('../img/team-tab2.jpg');
+		background-size: cover;
+	}
+	
+	div.tab-disp div.tab-click-tab2-team-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:95px;
+		background-image: url('../img/team-tab2-a.jpg');
+		background-size: cover;
+		visibility: hidden;
+	}
+	
+	div.tab-disp div.tab-click-tab3-team
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:175px;
+		background-image: url('../img/team-tab3.jpg');
+		background-size: cover;
+	}
+	
+	div.tab-disp div.tab-click-tab3-team-a
+	{
+		display:block;
+		cursor:pointer;
+		position:absolute; 
+		top: -29px; 
+		width:70px; 
+		height:29px; 
+		left:175px;
+		background-image: url('../img/team-tab3-a.jpg');
+		background-size: cover;
+		visibility: hidden;
+	}
+	
+	div.tour-item-inside
+	{
+		float:left;
+		font-size:14px;
+		width:100%;
+	}	
+
+	div.tab-team
+	{
+		width:110px; 
+		border-right: solid 8px #F08337;	
+		float:left;
+	}
+
+	div.tab-team-item
+	{
+		height:80px;
+		width:115px;
+		font-size: 14px;
+		color:#F08337;
+		text-align: center;
+		padding-top: 5px;
+	}
+	
+	div.tab-team-content
+	{
+		width:50%; 
+		float:left;
+		padding-left:2px;
+	}
+
+	div.tab-team-content-item
+	{
+		width:100%; 
+		height:70px;
+		font-size: 14px;
+		padding-top: 10px;
+		line-height: 16px;
+	}
+
 }
