@@ -69,8 +69,10 @@
 					<div class="fb-like" data-href="<?=$now_url?>" data-send="false" data-width="130" data-show_faces="false" data-font=""></div>
 
 					<?php
+						$team_content = htmlspecialchars($team['Team']['content']);
+						$team_content = str_replace("\r\n", "<br />",$team_content );
 						$tab1_content_inside = "<h2 style='border-bottom: solid 2px #F08337; padding-bottom: 15px;'>".$team['Team']['name']."</h2>"
-							."<p>".htmlspecialchars($team['Team']['content'])."</p>";
+							."<p>".$team_content."</p>";
 							
 						if(strlen($team['Team']['content_image'])>2){
 							$tab1_content_inside .= $this->Html->image($team['Team']['content_image']);

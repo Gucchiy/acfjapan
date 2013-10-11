@@ -59,6 +59,8 @@
 								
 							</div>
 						</div>			
+				</div>
+
 
 						<div class="portfolio-isotope" style="padding-top: 30px;">
 							
@@ -161,7 +163,6 @@
 							</div>
 
 			
-				</div>
 
 			</div>
 			
