@@ -1,3 +1,8 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
+
 <style>
 
 </style>
@@ -16,7 +21,7 @@
 							User Policy
 						</h1>
 						<ul class="breadcrumb">
-							<li><a href="#">TOP</a> <span class="divider">&raquo;</span></li>
+							<li><a href="<?=$root_url?>">Home</a> <span class="divider">&raquo;</span></li>
 							<li class="active">User Policy</li>
 						</ul>
 					</div>
@@ -143,7 +148,7 @@
 							<div class="callout-inner">
 								<div class="col-text">
 									<h3 class="headline">第6条（パートナー規約）</h3>
-									<p>1.パートナーは、運営者指定の方法に従い、金銭的な支援を行うことを表明することができます。</br>
+									<p>1.パートナーは、運営者が指定した方法に従い、金銭的な支援を行うことを表明することができます。</br>
 									2.パートナーは、募集期間満了前に限り、運営者指定の方法に従い、前項に定める支援をキャンセルすることができます。</br>
 									3.プランナーの提供する商品が所定の期日に届かない場合、パートナーはプランナーに対し履行を請求することができます。</br>
 									4.その他規定に関しては、本サイトに記載された特定商取引法に基づく表記に準じます。

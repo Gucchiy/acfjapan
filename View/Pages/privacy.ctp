@@ -1,3 +1,8 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
+
 <style>
 
 </style>
@@ -14,7 +19,7 @@
 							Privacy Policy
 						</h1>
 						<ul class="breadcrumb">
-							<li><a href="#">TOP</a> <span class="divider">&raquo;</span></li>
+							<li><a href="<?=$root_url?>">Home</a> <span class="divider">&raquo;</span></li>
 							<li class="active">Privacy Policy</li>
 						</ul>
 					</div>
@@ -30,7 +35,7 @@
 									<h2 class="title">
 							<span>プライバシーポリシー</span>
 						</h2>
-						本プライバシーポリシーは、ACF JAPANが収集し、利用するすべての個人情報をその対象として定める個人情報に関する基本的指針です。ACF JAPANでは、以下の方針のもと、適切に個人情報を管理し、保護いたします。</br></br>
+						本プライバシーポリシーは、ACF JAPANが収集し、利用するすべての個人情報をその対象として定める個人情報に関する基本的指針です。ACF JAPANでは、以下の方針のもと、適切に個人情報を管理し、保護致します。</br></br>
 
 
 			<div class="callout block">

@@ -43,7 +43,8 @@
 					<div class="row">
 						<div class="media">
 							<?php
-								echo $this->Html->image('demo/call.jpg');
+								echo $this->Html->image('company-image.jpg');
+								// <i class="icon-lightbulb"></i>
 							?>
 						</div>
 					</div>
@@ -52,8 +53,9 @@
 				<div class="eight columns">
 					<div class="row">
 						<h3>企業理念</h3>
-						<p>弊社は、多文化な背景を持つ人材を育て、より大きな夢を実現できる手助けをします。そして、音楽・教育・食の文化を通じて国と国の交流を増やし、よりあたたかい世界になれるよう、社会に貢献していきます。</p>
-					</div>
+						<p>
+
+弊社は、音楽・教育・食の文化を通じて国と国の交流を促進させ、人と人が助け合う、よりあたたかい世界の実現に向け、社会に貢献していきます。そして、多文化な背景を持つ人材を育て、より大きな夢を実現できる手助けをします。</p>					</div>
 				</div>
 
 				<div class="row">

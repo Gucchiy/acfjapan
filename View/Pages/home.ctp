@@ -237,7 +237,7 @@
 
 				<div class="container">
 					<div class="sixteen columns"><div class="report_title">
-						活躍しているNPO やNGO や企業の取材・紹介欄（PJ 立ち上げの敷居が高いと感じる）
+						日本＆アジアのために活躍している人・団体の取材一覧
 					</div></div>
 				</div>
 				<div class="report_list"><div class="container">

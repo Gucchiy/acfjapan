@@ -1,3 +1,8 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
+
 <style>
 
 </style>
@@ -14,7 +19,7 @@
 							Act on Specified Commercial Transactions
 						</h1>
 						<ul class="breadcrumb">
-							<li><a href="#">TOP</a> <span class="divider">&raquo;</span></li>
+							<li><a href="<?=$root_url?>">Home</a> <span class="divider">&raquo;</span></li>
 							<li class="active">Act on Specified Commercial Transactions</li>
 						</ul>
 					</div>
@@ -70,7 +75,8 @@
 							<div class="callout-inner">
 								<div class="col-text">
 									<h3 class="headline">販売価格</h3>
-									<p>各プロジェクトページに記載された価格に準じます。</p>
+									<p>各プロジェクトページに記載された価格に準じます。<br>
+									※ 販売価格以外の料金 : 全て税込み表示となりますので、その他必要手数料は特にありません。</p>
 								</div>
 								
 							</div>
@@ -92,7 +98,7 @@
 							<div class="callout-inner">
 								<div class="col-text">
 									<h3 class="headline">お支払関連</h3>
-									<p>支払時期：各プロジェクトの募集期間満了後、速やかに決済手続きをおこないます。</br>
+									<p>支払時期：各プロジェクトの募集期間満了後、速やかに決済手続きを行います。</br>
 支払方法:クレジットカード(VISA/MasterCard/JCB/AmericanExpress)でのお支払いが可能です。</p>
 								</div>
 								
@@ -113,7 +119,7 @@
 							<div class="callout-inner">
 								<div class="col-text">
 									<h3 class="headline">個人情報の取扱について</h3>
-									<p>個人情報の取り扱いに関しては、当社のプライバシーポリシーをご参照ください。</p>
+									<p>個人情報の取り扱いに関しては、当社のプライバシーポリシーをご参照下さい。</p>
 								</div>
 								
 							</div>
