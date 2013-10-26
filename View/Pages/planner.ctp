@@ -19,7 +19,7 @@
 				<div class="container">
 					<div class="sixteen columns">
 						<h1 class="page-title">
-							PLANNER <span>Designing for the future!</span>
+							PLANNER
 						</h1>
 						<ul class="breadcrumb">
 							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
@@ -62,7 +62,10 @@
 						<div class="process">
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-lightbulb"></i>
+									<?php
+										echo $this->Html->image('planner01.png');
+										// <i class="icon-lightbulb"></i>
+									?>
 									<span>プロジェクト</span>
 								</div>
 								<div class="description">
@@ -71,7 +74,10 @@
 							</div>
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-brush"></i>
+									<?php
+										echo $this->Html->image('planner02.png');
+										// <i class="icon-lightbulb"></i>
+									?>
 									<span>募集金額</span>
 								</div>
 								<div class="description">
@@ -80,7 +86,10 @@
 							</div>
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-cogwheels"></i>
+									<?php
+										echo $this->Html->image('planner03.png');
+										// <i class="icon-lightbulb"></i>
+									?>
 									<span>手数料</span>
 								</div>
 								<div class="description">
@@ -89,7 +98,10 @@
 							</div>
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-display"></i>
+									<?php
+										echo $this->Html->image('planner04.png');
+										// <i class="icon-lightbulb"></i>
+									?>
 									<span>資格</span>
 								</div>
 								<div class="description">

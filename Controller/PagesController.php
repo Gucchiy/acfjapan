@@ -75,7 +75,7 @@ class PagesController extends AppController {
 			
 			$this->Project->recursive = 0;
 			$options = array('status'=>'1');
-			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
+			$projects = $this->Project->find('all', array('conditions'=>$options, 'order'=>'Project.modified desc', 'limit'=>'10' ));
 			$this->set('projects', $projects);
 			
 			$this->Report->recursive = 2;
@@ -130,6 +130,21 @@ class PagesController extends AppController {
 						// echo $mail_message;
 				
 						mb_send_mail( $email, $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+
+						$email = $this->request->data['Contact']['email'];
+						$mail_subject = "ACF JAPANへのお問い合わせをいただきありがとうございます";
+						$mail_message =
+							"この度は、ACF JAPANへのお問い合わせをいただきありがとうございます。\n下記の通り、お問い合わせ内容を受け付けました。\n\n".
+							"・お名前\n".$this->request->data['Contact']['name']."さん\n".
+							"・メールアドレス\n".$this->request->data['Contact']['email']."\n".
+							"・概要\n".$subject['ContactSubject']['value']."\n".
+							"・コメント\n".$this->request->data['Contact']['comment']."\n\n\n".
+							"ご返信は、5日以内（土・日・祝を除く）に対応させていただいておりますが、\n内容によってはご返信できない場合もございますので\n予めご了承いただけますようお願い申し上げます。";
+							
+						// echo $mail_message;
+				
+						mb_send_mail( $email, $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+
 
 						$this->redirect(array('action' => 'index'));
 

@@ -42,7 +42,9 @@
 				<div class="eight columns">
 					<div class="row">
 						<div class="media">
-							<img src="demo/call.jpg" alt="">
+							<?php
+								echo $this->Html->image('demo/call.jpg');
+							?>
 						</div>
 					</div>
 				</div>

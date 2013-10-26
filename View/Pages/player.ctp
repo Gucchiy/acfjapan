@@ -19,7 +19,7 @@
 				<div class="container">
 					<div class="sixteen columns">
 						<h1 class="page-title">
-							PLAYER <span>Join our study tour for a life like experience!</span>
+							PLAYER
 						</h1>
 						<ul class="breadcrumb">
 							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
@@ -64,41 +64,45 @@
 							<div class="phase">
 								<div class="icon">
 									<?php
-										echo $this->Html->image('history.png');
+										echo $this->Html->image('player01.png');
 										// <i class="icon-lightbulb"></i>
 									?>
 									<span>スタディツアー</span>
 								</div>
 								<div class="description">
-							<h3 class="headline">・どうやって参加するの？</h3>各プロジェクトページの中の＜スタディツアー（Link貼る）＞の中で、プランナー（企画者）や他のプレイヤー（参加者）と交流しながら、日程・予算・持ち物・見たい場所などを決定していきます。
+							<h3 class="headline">・どうやって参加するの？</h3>各参加型のプロジェクトページにおいて、プランナー（企画者）や他のプレイヤー（参加者）と交流しながら、日程・予算・持ち物・観光場所などを決定していきます。
+
 								</div>
 							</div>
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-brush"></i>
+                                <?php
+										echo $this->Html->image('player02.png');
+										// <i class="icon-lightbulb"></i>
+									?>
+                                
+									
 									<span>予算</span>
 								</div>
 								<div class="description">
-									<h3 class="headline">・どれくらいの費用がかかるの？</h3>ある程度人数がまとまるため安くいける！その代わり海外だと5000円、国内だと3000円がプランナーに寄付される。それ相当の特典がもらえるのも嬉しいポイントです。
+									<h3 class="headline">・どれくらいの費用がかかるの？</h3>ある程度大人数で行くため、普通の旅行代金より若干お安くなります。また、海外だと5,000円、国内だと3,000円がプランナーに寄付され、相当の特典ももらえます！
+
 								</div>
 							</div>
 							<div class="phase">
 								<div class="icon">
-									<i class="icon-cogwheels"></i>
-									<span>あああ</span>
+                                  <?php
+										echo $this->Html->image('player03.png');
+										// <i class="icon-lightbulb"></i>
+									?>
+									
+									<span>実行の有無</span>
 								</div>
 								<div class="description">
-									<h3 class="headline">・ああああああ</h3>あああああああああああああああああああ
+									<h3 class="headline">・プロジェクトが成立しなかった場合はどうなるの？</h3>残念ながら、プロジェクトの成否はプランナーの判断によるため、成立しなかった場合はスタディーツアーも中止となります。パートナー・プレイヤー・プランナーの全員が一丸となってプロジェクトの成功を目指しましょう！
 								</div>
 							</div>
-							<div class="phase">
-								<div class="icon">
-									<i class="icon-display"></i>
-									<span>いいい</span>
-								</div>
-								<div class="description">
-									<h3 class="headline">・いいいいいい</h3>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</div>
-							</div>
+							
 							<br><br>
 							
 					</div>
