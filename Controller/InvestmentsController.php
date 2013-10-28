@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class InvestmentsController extends AppController {
 
+	public $uses = array('Investment', 'Project' );
+
 /**
  * index method
  *
@@ -98,5 +100,33 @@ class InvestmentsController extends AppController {
 		}
 		$this->Session->setFlash(__('Investment was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	public function select($id = null) {
+	// $id はプロジェクト ID
+
+		if (!$this->Project->exists($id)) {
+			throw new NotFoundException(__('Invalid project'));
+		}
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$this->set('project', $this->Project->find('first', $options));
+		
+
+	}
+	
+	public function invest($id = null) {
+	// $id はプロジェクト ID
+		print_r($this->params['url']);
+		if (!$this->Project->exists($id)) {
+			throw new NotFoundException(__('Invalid project'));
+		}
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$this->set('project', $this->Project->find('first', $options));
+		
+		$num = isset($this->params['url']['num']) ? $this->params['url']['num'] : 0;
+		$this->set('num', $num );
+			
 	}
 }

@@ -246,6 +246,22 @@ div.donation
 	margin-bottom:10px;
 }
 
+a.donation
+{
+	border: solid 1px #FFFFFF;
+	display:block;
+	background-color:#ffffff;
+	color: #7A6058;
+	float:left;
+}
+
+a.donation:hover
+{
+	border: solid 1px #F08337;
+	color: none;
+	background-color:#E9E4D9;
+}
+
 div.donation p.price
 {
 	font-size:23px;
@@ -762,6 +778,8 @@ form .submit input[type=submit]:hover {
 div.view dd {
 	margin-left:120px;
 }
+
+
 
 @media only screen and (max-width: 767px) {
 

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class ProjectsController extends AppController {
 	
-	public $uses = array('Project','ProjectComment','User','Entry');
+	public $uses = array('Project','ProjectComment','User','Entry' );
 
 /**
  * index method
@@ -139,4 +139,5 @@ class ProjectsController extends AppController {
 		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
 		$this->set('project', $this->Project->find('first', $options));
 	}
+
 }

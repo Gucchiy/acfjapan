@@ -159,7 +159,7 @@
 						<br />
 						<div class="col-btn">
 							<?php
-								echo $this->Html->image('button.png', array('url'=>'#'));							
+								echo $this->Html->image('button.png', array('url'=>array('controller'=>'investments', 'action'=>'select',$project['Project']['id'])));							
 								// echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$project['Project']['id']), array('class'=>'btn'));
 							?>
 						</div>
@@ -175,6 +175,7 @@
 								if( $project['Project']['donation_price'.$i] ){
 						?>
 									<div class="donation">
+										<a href="#" class="donation clearfix">
 										<?php
 											if(strlen($project['Project']['donation_image'.$i])){
 												echo $this->Html->image($project['Project']['donation_image'.$i]); 												
@@ -183,6 +184,7 @@
 										?>
 										<p class="price">&yen; <?=number_format($project['Project']['donation_price'.$i])?></p>
 										<?=$project['Project']['donation_text'.$i];?>
+										</a>
 									</div>
 						
 							
