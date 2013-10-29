@@ -230,8 +230,11 @@ class UsersController extends AppController {
 
 	function login()
 	{
+		$back_url = isset($this->request->query['back_url']) ? 
+			$this->request->query['back_url'] : Router::url('/',true);
+		
 		$redirect_uri = Router::url('/',true).'/users/callback_facebook?'
-			.'back_url='.urldecode(Router::url('/',true));
+			.'back_url='.urldecode($back_url);
 
 		$url = $this->facebook->getLoginUrl(
 			array('scope' => 'email,publish_stream', 'redirect_uri'=>$redirect_uri));  			
@@ -253,7 +256,8 @@ class UsersController extends AppController {
 			}
 			$this->user_id = $user_data_db['User']['id'];
 			$this->Session->write('user_id', $this->user_id );
-			$this->redirect(array('controller'=>'pages','action'=>'display'));
+			// $this->redirect(array('controller'=>'pages','action'=>'display'));
+			$this->redirect($back_url);
 
 			
 		}

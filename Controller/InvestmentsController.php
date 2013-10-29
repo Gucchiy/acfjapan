@@ -108,6 +108,16 @@ class InvestmentsController extends AppController {
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
+
+		// ログイン状態じゃなかった場合はログイン画面に繊維
+		if(!isset( $this->user_id )){
+			
+			$url = Router::url('/users/login',true).'?back_url='.urlencode( Router::url('',true) );
+			// echo Router::url('',true);
+			$this->Session->setFlash('お支払を行うためにはログインしてください。ログイン作業後にお支払に進みます。');
+			$this->redirect($url);
+
+		}
 		$this->Project->recursive = 3;
 		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
 		$this->set('project', $this->Project->find('first', $options));
@@ -115,18 +125,40 @@ class InvestmentsController extends AppController {
 
 	}
 	
-	public function invest($id = null) {
+	public function exec($id = null) {
 	// $id はプロジェクト ID
-		print_r($this->params['url']);
+		// print_r($this->params);
+		//	print_r($this->params['pass']);
+		$num = isset($this->params['pass'][1]) ? $this->params['pass'][1] : 0;
+		$this->set('num', $num );
+		if( !$num || $num > 6 ){
+			$this->redirect(array('action'=>'select', $id)); 
+		}
+		
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
+
+		// ログイン状態じゃなかった場合はログイン画面に繊維
+		if(!isset( $this->user_id )){
+			
+			$url = Router::url('/users/login',true).'?back_url='.urlencode( Router::url('',true) );
+			// echo Router::url('',true);
+			$this->Session->setFlash('お支払を行うためにはログインしてください。ログイン作業後にお支払に進みます。');
+			
+			$this->redirect($url);
+
+		}
+
+
 		$this->Project->recursive = 3;
 		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
-		$this->set('project', $this->Project->find('first', $options));
+		$project = $this->Project->find('first', $options);
+		$this->set('project', $project );
 		
-		$num = isset($this->params['url']['num']) ? $this->params['url']['num'] : 0;
-		$this->set('num', $num );
+		if( !$project['Project']['donation_price'.$num] ){			
+			$this->redirect(array('action'=>'select', $id)); 
+		}
 			
 	}
 }

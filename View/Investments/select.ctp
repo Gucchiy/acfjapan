@@ -49,9 +49,11 @@
 						for( $i = 1; $i < 7; $i++ ){
 															
 							if( $project['Project']['donation_price'.$i] ){
+								
+								$url = $root_url."investments/exec/".$project['Project']['id']."/".$i;
 					?>
 							<div class="donation" style="width:190px;float:left;">
-								<a href="#" class="donation clearfix">
+								<a href="<?=$url?>" class="donation clearfix">
 									<?php
 										if(strlen($project['Project']['donation_image'.$i])){
 											echo $this->Html->image($project['Project']['donation_image'.$i]); 												
