@@ -164,8 +164,12 @@
 							  	<?php
 							  		echo $this->Html->image('watch.png');
 									
-									$remain_date = date("d", strtotime("now")-strtotime($project['Project']['deadline']));
-									echo "&nbsp;残り{$remain_date}日";
+									$remain_date = ceil((strtotime($project['Project']['deadline'])-(strtotime("now")))/(60*60*24));
+									// $remain_date = date('d',(strtotime($project['Project']['deadline'])-(strtotime("now"))));
+									/* echo strtotime("now").' ';
+									echo $project['Project']['deadline'].' ';
+									echo strtotime($project['Project']['deadline']); */
+									echo "&nbsp;残り{$remain_date}"; 
 								?>
 							  	</div>
 							  	<div class="want_amount">
