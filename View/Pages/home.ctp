@@ -169,7 +169,7 @@
 									/* echo strtotime("now").' ';
 									echo $project['Project']['deadline'].' ';
 									echo strtotime($project['Project']['deadline']); */
-									echo "&nbsp;残り{$remain_date}"; 
+									echo "&nbsp;残り{$remain_date}日"; 
 								?>
 							  	</div>
 							  	<div class="want_amount">

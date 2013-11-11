@@ -25,8 +25,9 @@ $root_url = $this->Html->url('/',true);
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php // echo $cakeDescription ?>:
+		<?php // echo $title_for_layout; ?>
+		ACF－アジア・クラウド・ファンディング―
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">

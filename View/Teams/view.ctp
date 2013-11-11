@@ -75,7 +75,7 @@
 							."<p>".$team_content."</p>";
 							
 						if(strlen($team['Team']['content_image'])>2){
-							$tab1_content_inside .= $this->Html->image($team['Team']['content_image']);
+							$tab1_content_inside = $tab1_content_inside."<div style='text-align:center;'>".$this->Html->image($team['Team']['content_image'])."</div>";
 							
 						}
 					
