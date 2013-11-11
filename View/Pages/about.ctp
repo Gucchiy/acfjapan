@@ -1,3 +1,7 @@
+<?php
+	$root_url = $this->Html->url("/");
+	// $this->Html->url($root_url, true);
+?>
 <style>
 
 </style>
@@ -5,6 +9,21 @@
 
 <!-- Content -->
 <div class="content">
+
+<!-- Page Header -->
+			<div class="page-header">
+				<div class="container">
+					<div class="sixteen columns">
+						<h1 class="page-title">
+							ABOUT US <span>Asia Crowd Funding Japan</span>
+						</h1>
+						<ul class="breadcrumb">
+							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
+							<li class="active">ABOUT US</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 	<div class="container main">
 
