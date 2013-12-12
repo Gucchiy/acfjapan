@@ -272,5 +272,9 @@ class UsersController extends AppController {
 		$this->redirect(Router::url('/',true));
 	}
 	
+	function mypage()
+	{
+		
+	}
 
 }

@@ -378,6 +378,24 @@ a.logout
 	font-weight: normal;
 }
 
+a.mypage
+{
+	width:80px; 
+	height:20px; 
+	background-color: #F08337; 
+	font-size:10px; 
+	color: #ffffff; 
+	padding:0px; 
+	margin: 0px;	
+	text-align:center;
+	display:block;
+	position:absolute;
+	top:3px;
+	right:8%;
+	font-weight: normal;
+}
+
+
 div.planner
 {
 	width:90px; 
@@ -833,6 +851,41 @@ div.view dd {
 		right:3%;
 		font-weight: normal;
 	}
+
+	a.logout
+	{
+		width:80px; 
+		height:20px; 
+		background-color: #d3c1a6; 
+		font-size:10px; 
+		color: #ffffff; 
+		padding:0px; 
+		margin: 0px;	
+		text-align:center;
+		display:block;
+		position:absolute;
+		top:3px;
+		right:40%;
+		font-weight: normal;
+	}
+
+	a.mypage
+	{
+		width:80px; 
+		height:20px; 
+		background-color: #F08337; 
+		font-size:10px; 
+		color: #ffffff; 
+		padding:0px; 
+		margin: 0px;	
+		text-align:center;
+		display:block;
+		position:absolute;
+		top:3px;
+		right:10%;
+		font-weight: normal;
+	}
+
 
 	div.tab-disp
 	{

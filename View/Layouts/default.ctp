@@ -183,8 +183,10 @@ $root_url = $this->Html->url('/',true);
 									
 								}else{
 
-									if(isset($fb_logout_url))
+									if(isset($fb_logout_url)){
 										echo $this->Html->link('ログアウト', $fb_logout_url, array('class'=>'logout') );
+										echo $this->Html->link('マイページ', array('controller'=>'users','action'=>'mypage'),array('class'=>'mypage'));
+									}
 									
 								}
 							?>
