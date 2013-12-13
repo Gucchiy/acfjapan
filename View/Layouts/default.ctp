@@ -249,7 +249,7 @@ $root_url = $this->Html->url('/',true);
 					<!-- Facebook -->
 					<div class="one-third column">
 						<div class="foot_fb">
-							<div class="fb-like" data-href="http://acfjapan.com/" data-width="300" data-show-faces="true" data-send="true" style="margin:0px"></div>
+							<div class="fb-like" data-href="https://www.facebook.com/acfjapan" data-width="300" data-show-faces="true" data-send="true" style="margin:0px"></div>
 						</div>
 
 					</div>
