@@ -65,6 +65,26 @@ class AppController extends Controller {
 
 	}
 
+	function check_admin(){
+		
+		$admin_ids = array('100001870541487','725881640','100002667503688');
+		
+		
+		if(isset($this->fb_me)){
+
+			foreach($admin_ids as $admin_id){
+
+				if($this->fb_me['id']==$admin_id){
+					return true;
+				}
+			}
+			
+		}
+		$this->redirect(array('controller'=>'pages','action'=>'display'));
+		return false;
+	}
+
+
 	function callback(){  
 	   
 	}  

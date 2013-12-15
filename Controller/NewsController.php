@@ -13,6 +13,7 @@ class NewsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->News->recursive = 0;
 		$this->set('news', $this->paginate());
 	}
@@ -25,6 +26,7 @@ class NewsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->check_admin();
 		if (!$this->News->exists($id)) {
 			throw new NotFoundException(__('Invalid news'));
 		}
@@ -38,6 +40,7 @@ class NewsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->News->create();
 			if ($this->News->save($this->request->data)) {
@@ -57,6 +60,7 @@ class NewsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 		if (!$this->News->exists($id)) {
 			throw new NotFoundException(__('Invalid news'));
 		}
@@ -81,6 +85,7 @@ class NewsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->News->id = $id;
 		if (!$this->News->exists()) {
 			throw new NotFoundException(__('Invalid news'));

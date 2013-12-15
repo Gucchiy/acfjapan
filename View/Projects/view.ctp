@@ -49,6 +49,7 @@
 								
 								}else{
 									
+									// ToDo: 画像の default 処理
 									echo $this->Html->image($project['User']['image']);
 								}
 							?>

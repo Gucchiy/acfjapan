@@ -16,6 +16,7 @@ class TeamsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->Team->recursive = 0;
 		$this->set('teams', $this->paginate());
 		$users = $this->Project->User->find('list');
@@ -43,6 +44,7 @@ class TeamsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->Team->create();
 			if ($this->Team->save($this->request->data)) {
@@ -64,6 +66,7 @@ class TeamsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 
 		if (!$this->Team->exists($id)) {
 			throw new NotFoundException(__('Invalid team'));
@@ -91,6 +94,7 @@ class TeamsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->Team->id = $id;
 		if (!$this->Team->exists()) {
 			throw new NotFoundException(__('Invalid team'));

@@ -7,12 +7,14 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
@@ -25,6 +27,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->check_admin();
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -80,10 +83,8 @@ class UsersController extends AppController {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 
-				/*
-				$this->user_id = $user_data_db['User']['id'];
+				$this->user_id = $this->User->getID();				
 				$this->Session->write('user_id', $this->user_id );
-				*/
 
 				$this->Session->setFlash(__('新規登録が完了しました。'));
 				$this->redirect(array('controller'=>'pages','action'=>'display'));
@@ -105,6 +106,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -131,6 +133,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -181,11 +184,13 @@ class UsersController extends AppController {
 		$user_data_db = $this->User->find('first', array('conditions'=>array('fbid'=>$me['id'])));
 		// query 結果がある(count はなぜか1を返す)
 		if( isset( $user_data_db['User'] ) ){
+		// すでに DB で管理しているユーザーの場合は、とりあえずデータを更新しておく
 			
 			$user_data['User']['id'] = $user_data_db['User']['id'];
 			$this->User->save( $user_data );
 
 		}else{
+		// 新規ユーザーの場合は EULA 確認へ
 			
 			/*
 			$this->User->create();
@@ -217,11 +222,29 @@ class UsersController extends AppController {
 		
 		if ($this->request->is('post')) {
 			// きっと同意ボタンは押されている
-			$this->User->create();
-			$this->User->save( $user_data );			
-			$user_data['User']['id'] = $this->User->getID();
+
+			// Facebook ID は見つからなかったが、email は存在
+			$user_data_db = $this->User->find('first', array('conditions'=>array('email'=>$user_data['User']['email'])));
+			// query 結果がある(count はなぜか1を返す)
 			
-			$this->Session->setFlash('はじめまして、'.$user_data['User']['fbname'].'さん');
+			if( isset( $user_data_db['User'] ) ){
+			// すでに同じメールアドレスで登録がある場合は、アカウントを統合
+				
+				$save_user_data = array_merge($user_data_db['User'],$user_data['User']);
+				// print_r($user_data_db);
+				// print_r($user_data);
+				// print_r($save_user_data);
+				$this->User->save(array('User'=>$save_user_data));
+				$this->Session->setFlash($user_data['User']['email'].'に facebook アカウントを統合しました。');				
+			
+			}else{
+				
+				$this->User->create();
+				$this->User->save( $user_data );			
+				$user_data['User']['id'] = $this->User->getID();
+				
+				$this->Session->setFlash('はじめまして、'.$user_data['User']['fbname'].'さん');
+			}			
 			
 			$this->redirect(array('controller'=>'pages','action'=>'display'));
 			// $this->redirect(array('Controller'=>'Pages','action'=>'display'));		

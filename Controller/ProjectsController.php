@@ -15,6 +15,7 @@ class ProjectsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->Project->recursive = 0;
 		$this->set('projects', $this->paginate());
 	}
@@ -53,6 +54,7 @@ class ProjectsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->Project->create();
 			if ($this->Project->save($this->request->data)) {
@@ -75,6 +77,7 @@ class ProjectsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
@@ -102,6 +105,7 @@ class ProjectsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->Project->id = $id;
 		if (!$this->Project->exists()) {
 			throw new NotFoundException(__('Invalid project'));
