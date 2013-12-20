@@ -1,4 +1,5 @@
 <?php
+App::import('Vendor', 'lib_RandomString');   
 App::uses('AppController', 'Controller');
 /**
  * Users Controller
@@ -7,6 +8,30 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+public $uses = array('User','Wait');
+
+
+	protected function send_regist_mail($email,$first_name,$last_name,$password)
+	{
+		// 作業中
+		// ランダム文字列生成クラス
+		$rnd_string = new RandomString;			
+		$security_token = $rnd_string->number( 39 );
+
+		$this->Wait->deleteAll(array('Wait.email'=>$email));
+
+		$this->Wait->create();
+		$this->Wait->save(array('Wait'=>array('email'=>$email,'first_name'=>$first_name,'last_name'=>$last_name,'password'=>$password,'token'=>$security_token)));
+
+		$mail_subject = "ACF Japan への新規登録確認";
+		$mail_message =
+			"ACF Japan へようこそ\n\n".
+			"ユーザー登録を完了するには下記のURLへアクセスしてください。\n".
+			Router::url('/',true)."/users/regist_complete?key=".$security_token."&email=".$email;	
+			
+		mb_send_mail( $email, $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+		
+	}
 
 /**
  * index method
@@ -52,7 +77,8 @@ class UsersController extends AppController {
 
 
 		if ($this->request->is('post')) {
-			
+		// email による登録
+		
 			if($this->data['User']['password'] != $this->data['User']['password_confirm']){
 				
 				$this->Session->setFlash('入力された Password が異なります');
@@ -60,24 +86,55 @@ class UsersController extends AppController {
 			}
 			
 			if( $this->User->find('count',array('conditions'=>array('email'=>$this->data['User']['email']))) >= 1 ){
+			// email が存在
 				
 				$fb_user = $this->User->find('first',array('conditions'=>array('email'=>$this->data['User']['email'])));
 				if(strlen($fb_user['User']['fbid'])>2){
+				// facebook ID として登録
+
+					$email = $this->request->data['User']['email'];
+					$first_name = $this->request->data['User']['first_name'];
+					$last_name = $this->request->data['User']['last_name'];
+					$password = $this->request->data['User']['password'];
+	
+					$this->send_regist_mail($email, $first_name, $last_name, $password);
+	
+					$this->Session->setFlash(__('新規登録を受け付けました。登録メールアドレスにメールをお送りしましたので、そちらをご確認ください。'));
+					$this->redirect(array('controller'=>'pages','action'=>'display'));
 					
 					/*
 					if(strlen($fb_user['']))
 					$fb_user['User']['password'] = $this->data['User']['password'];
 					$this->User->save($fb_user);
 					$this->Session->setFlash('お客様の Facebook ID が登録されていましたので ID を統合しました。');
-					*/
+
 					$this->Session->setFlash("メールアドレス {$fb_user['User']['email']} は、すでにfacebook ID として登録済みです。");	
+					 * 					 * 
+					 * 					*/
+
+
 					
 				}else{
 					$this->Session->setFlash('すでに登録済みの email アドレスです。');
 				}
 				return;	
-			}
 			
+			}else{
+			// email が存在しない → 新規登録
+				
+				$email = $this->request->data['User']['email'];
+				$first_name = $this->request->data['User']['first_name'];
+				$last_name = $this->request->data['User']['last_name'];
+				$password = $this->request->data['User']['password'];
+
+				$this->send_regist_mail($email, $first_name, $last_name, $password);
+
+				$this->Session->setFlash(__('新規登録を受け付けました。登録メールアドレスにメールをお送りしましたので、そちらをご確認ください。'));
+				$this->redirect(array('controller'=>'pages','action'=>'display'));
+				
+
+			}
+			/* メールからの登録操作で行う
 			$this->request->data['User']['fbname'] = $this->request->data['User']['last_name'].' '.$this->request->data['User']['first_name'];
 			
 			$this->User->create();
@@ -92,6 +149,7 @@ class UsersController extends AppController {
 				
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
+			 */
 		}
 		$belongings = $this->User->Belonging->find('list');
 		$this->set(compact('belongings'));
@@ -249,6 +307,62 @@ class UsersController extends AppController {
 			$this->redirect(array('controller'=>'pages','action'=>'display'));
 			// $this->redirect(array('Controller'=>'Pages','action'=>'display'));		
 		}		
+	}
+
+	function regist_complete()
+	{
+		// print_r($this->params['url']);
+		$key = $this->params['url']['key'];
+		$email = $this->params['url']['email'];
+		
+		$found_data = $this->Wait->find('first', array('conditions'=>array('Wait.email'=>$email,'Wait.token'=>$key)));
+		if(isset($found_data['Wait'])){
+			
+			$last_name = $found_data['Wait']['last_name'];
+			$first_name = $found_data['Wait']['first_name'];
+			$password = $found_data['Wait']['password'];
+
+			$user_data = $this->User->find('first', array('conditions'=>array('email'=>$email)));
+			
+			// print_r($user_data);
+			
+			if(isset($user_data['User'])){
+			// 登録済み email
+
+				// print_r($user_data);
+				if(	( strlen($user_data['User']['fbid'])>2 ) && ($user_data['User']['password'] == 0)){
+				// facebook として登録がある
+
+					$user_data['User']['last_name'] = $last_name;
+					$user_data['User']['first_name'] = $first_name;
+					$user_data['User']['password'] = $password;
+					$this->User->save($user_data);
+					$this->Session->setFlash(__('Facebook ID と統合しました。'));
+					$this->user_id = $user_data['User']['id'];				
+					$this->Session->write('user_id', $this->user_id );
+					
+				}else{
+				// facebook ではなく登録がある
+					
+					$this->Session->setFlash(__('登録済み email です。'));
+					
+				}
+				
+			}else{
+				$this->User->create();
+				$this->User->save(array('User'=>array(
+					'email'=>$email,'fbname'=>$last_name.' '.$first_name,'last_name'=>$last_name,'first_name'=>$first_name,'password'=>$password)));
+
+				$this->user_id = $this->User->getID();				
+				$this->Session->write('user_id', $this->user_id );
+				$this->Session->setFlash(__('新規登録が完了しました。'));
+				
+			}
+
+			$this->Wait->delete($found_data['Wait']['id']);		
+			$this->redirect(array('controller'=>'pages','action'=>'display'));			
+		}
+		
 	}
 
 	function login()
