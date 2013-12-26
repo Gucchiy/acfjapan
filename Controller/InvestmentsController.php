@@ -171,6 +171,17 @@ class InvestmentsController extends AppController {
 			$this->set('investment_id',$this->Investment->getID());
 			$this->set('values',$this->request->data);
 			$this->set('settlement',Configure::read('settlement'));
+			
+			$user_data = $this->User->findById($this->user_id);
+
+			$mail_subject = "ACF Japan よりお知らせ： プロジェクトへの応援を受け付けました";
+			$mail_message =
+				"{$user_data['User']['fbname']}様\n\n".
+				"プロジェクトへの応援を受け付け致しました。\n".
+				"カード決済完了後、カード会社より確認のメールが届きますのでご確認ください。";
+				
+			mb_send_mail( $user_data['User']['email'], $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+
 		}
 			
 	}
@@ -198,8 +209,10 @@ class InvestmentsController extends AppController {
 		$investment = $this->Investment->find('first', $options);
 		
 		$this->set('investment',$investment);
+
+		// echo $this->Investment->primaryKey;
 		
-		$update = array('Investment.' . $this->Investment->primaryKey => $id, 'state'=>1);
+		$update = array($this->Investment->primaryKey => $id, 'state'=>1);
 		$this->Investment->save($update);
 	
 	}
