@@ -1,5 +1,7 @@
 <?php
+App::import('Vendor','functions');
 App::uses('AppController', 'Controller');
+
 /**
  * Projects Controller
  *
@@ -7,7 +9,7 @@ App::uses('AppController', 'Controller');
  */
 class ProjectsController extends AppController {
 	
-	public $uses = array('Project','ProjectComment','User','Entry' );
+	public $uses = array('Project','ProjectComment','User','Entry','Investment' );
 
 /**
  * index method
@@ -31,6 +33,29 @@ class ProjectsController extends AppController {
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$project = $this->Project->find('first', $options);
+		
+		$total_investment_query = $this->Investment->find('first',array('fields'=>array('SUM(total)'),'conditions'=>array('project_id'=>$id,'state'=>1)));
+		$total_investment = $total_investment_query[0]['SUM(total)'];
+
+		$want_amount = $project['Project']['want_ammount'];
+		
+		$progress_plane = $total_investment/$want_amount;
+		$progress = ceil($progress_plane*10.0/2);
+		if($progress > 5){$progress = 5;}
+		// echo $progress.'&nbsp;';
+		$progress_5 = MROUND($progress_plane*100,5);
+		// echo $progress_5;
+		$hart_filename = sprintf("hart/%03d.png",$progress_5);
+
+		$remain_date = ceil((strtotime($project['Project']['deadline'])-(strtotime("now")))/(60*60*24));
+
+		$this->set(compact('project','total_investment','progress','hart_filename','remain_date'));
+		
+		// print_r($total_investment);
+
 		if($this->request->is('post')){
 			
 			// print_r($this->request->data);
@@ -41,10 +66,6 @@ class ProjectsController extends AppController {
 			$this->ProjectComment->save($this->request->data);
 			$this->redirect(array('action'=>'view', $id));
 		}
-		$this->Project->recursive = 3;
-		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
-		$this->set('project', $this->Project->find('first', $options));
-
 
 	}
 

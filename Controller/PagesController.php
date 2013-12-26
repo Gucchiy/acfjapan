@@ -19,7 +19,7 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+App::import('Vendor','functions');
 App::uses('AppController', 'Controller');
 
 /**
@@ -73,9 +73,11 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		if($path[0]=='home'){
 			
-			$this->Project->recursive = 0;
+			$this->Project->recursive = 2;
 			$options = array('status'=>'1');
 			$projects = $this->Project->find('all', array('conditions'=>$options, 'order'=>'Project.modified desc', 'limit'=>'10' ));
+			
+			
 			$this->set('projects', $projects);
 			
 			$this->Report->recursive = 2;
@@ -95,7 +97,7 @@ class PagesController extends AppController {
 			
 		}else if($path[0]=='partner'){
 
-			$this->Project->recursive = 0;
+			$this->Project->recursive = 2;
 			$options = array('status'=>'1');
 			$projects = $this->Project->find('all', array('conditions'=>$options, 'limit'=>'10' ));
 			$this->set('projects', $projects);

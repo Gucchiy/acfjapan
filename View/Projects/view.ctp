@@ -128,16 +128,15 @@
 						<h5>現在の支援総額</h5>
 						<div class="hart_progress">
 							<?php
-								echo $this->Html->image("hart/000.png");
+								echo $this->Html->image($hart_filename);
 							?>
 						</div>
-						<h2>&yen; 0円</h2>
+						<h2>&yen; <?=number_format($total_investment)?>円</h2>
 						<div class="time">
 						<?php
 					  		echo $this->Html->image('watch.png');
-							
-							$remain_date = date("d", strtotime("now")-strtotime($project['Project']['deadline']));
-							echo "&nbsp;残り{$remain_date}日";
+
+							echo "&nbsp;残り{$remain_date}日"; 
 						?>			
 						</div>
 						<div class="box clearfix">
@@ -146,11 +145,12 @@
 						</div>
 					  	<div class="progress">
 					  	<?php
-					  		echo $this->Html->image('people-beige.png'); 
-					  		echo $this->Html->image('people-beige.png'); 
-					  		echo $this->Html->image('people-beige.png'); 
-					  		echo $this->Html->image('people-beige.png'); 
-					  		echo $this->Html->image('people-beige.png'); 
+					  		for($i=0;$i<$progress;$i++){
+						  		echo $this->Html->image('people-orange.png'); 				  			
+					  		}
+					  		for($i=$progress;$i<5;$i++){
+						  		echo $this->Html->image('people-beige.png'); 				  			
+					  		}
 					  	?>
 					  	</div>
 						<div class="box clearfix">

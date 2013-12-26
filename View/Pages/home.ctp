@@ -136,6 +136,23 @@
 
 					<?php
 						foreach($projects as $project ){
+
+							$total_investment = 0;
+							foreach($project['Investment'] as $investment ){
+								
+								$total_investment += $investment['total'];
+							}
+							$want_amount = $project['Project']['want_ammount'];
+
+							$progress_plane = $total_investment/$want_amount;
+							$progress = ceil($progress_plane*10.0/2);
+							if($progress > 5){$progress = 5;}
+							// echo $progress.'&nbsp;';
+							$progress_5 = MROUND($progress_plane*100,5);
+							// echo $progress_5;
+							$hart_filename = sprintf("hart/%03d.png",$progress_5);
+					
+							$remain_date = ceil((strtotime($project['Project']['deadline'])-(strtotime("now")))/(60*60*24));
 					?>
 
 						<!-- Portfolio Item -->
@@ -146,25 +163,28 @@
 								?>
 								<div class="hart_progress">
 									<?php
-							  			echo $this->Html->image('hart/000.png'); 
+										echo $this->Html->image($hart_filename);
 									?>
 								</div>								
 							</figure>
 						  <div class="item-info">
 							  	<div class="progress">
 							  	<?php
-							  		echo $this->Html->image('people-beige-top.png'); 
-							  		echo $this->Html->image('people-beige-top.png'); 
-							  		echo $this->Html->image('people-beige-top.png'); 
-							  		echo $this->Html->image('people-beige-top.png'); 
-							  		echo $this->Html->image('people-beige-top.png'); 
+
+							  		for($i=0;$i<$progress;$i++){
+								  		echo $this->Html->image('people-orange-top.png'); 				  			
+							  		}
+							  		for($i=$progress;$i<5;$i++){
+								  		echo $this->Html->image('people-beige-top.png'); 				  			
+							  		}
+							  	
 							  	?>
 							  	</div>
 							  	<div class="time">
 							  	<?php
 							  		echo $this->Html->image('watch.png');
 									
-									$remain_date = ceil((strtotime($project['Project']['deadline'])-(strtotime("now")))/(60*60*24));
+									// $remain_date = ceil((strtotime($project['Project']['deadline'])-(strtotime("now")))/(60*60*24));
 									// $remain_date = date('d',(strtotime($project['Project']['deadline'])-(strtotime("now"))));
 									/* echo strtotime("now").' ';
 									echo $project['Project']['deadline'].' ';
