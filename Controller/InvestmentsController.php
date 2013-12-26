@@ -139,7 +139,7 @@ class InvestmentsController extends AppController {
 			throw new NotFoundException(__('Invalid project'));
 		}
 
-		// ログイン状態じゃなかった場合はログイン画面に繊維
+		// ログイン状態じゃなかった場合はログイン画面に遷移
 		if(!isset( $this->user_id )){
 			
 			$url = Router::url('/users/login',true).'?back_url='.urlencode( Router::url('',true) );
@@ -159,6 +159,49 @@ class InvestmentsController extends AppController {
 		if( !$project['Project']['donation_price'.$num] ){			
 			$this->redirect(array('action'=>'select', $id)); 
 		}
+		
+		if ($this->request->is('post') || $this->request->is('put')) {
+
+			// print_r($this->request->data);
+			$this->Investment->create();
+			$this->request->data['Investment']['project_id'] = $id;
+			$this->request->data['Investment']['user_id'] = $this->user_id;
+			$this->request->data['Investment']['num'] = $num;
+			$this->Investment->save($this->request->data);
+			$this->set('investment_id',$this->Investment->getID());
+			$this->set('values',$this->request->data);
+			$this->set('settlement',Configure::read('settlement'));
+		}
 			
 	}
+
+	public function paid($id=null){
+	// id は investment ID
+
+		if (!$this->Investment->exists($id)) {
+			throw new NotFoundException(__('Invalid investment'));
+		}
+	
+		// ログイン状態じゃなかった場合はログイン画面に遷移
+		if(!isset( $this->user_id )){
+			
+			$url = Router::url('/users/login',true).'?back_url='.urlencode( Router::url('',true) );
+			// echo Router::url('',true);
+			$this->Session->setFlash('お支払を完了するためにはログインしてください。ログイン作業後にお支払完了に進みます。');
+			
+			$this->redirect($url);
+
+		}
+
+		$this->Project->recursive = 3;
+		$options = array('conditions' => array('Investment.' . $this->Investment->primaryKey => $id));
+		$investment = $this->Investment->find('first', $options);
+		
+		$this->set('investment',$investment);
+		
+		$update = array('Investment.' . $this->Investment->primaryKey => $id, 'state'=>1);
+		$this->Investment->save($update);
+	
+	}
+
 }

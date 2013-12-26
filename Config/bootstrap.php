@@ -108,21 +108,26 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
-if($_SERVER["HTTP_HOST"]==="acfjapan.com"){
+if(($_SERVER["HTTP_HOST"]==="acfjapan.com") || ($_SERVER["HTTP_HOST"]==="www.acfjapan.com")){
+	
+	// echo "test";
 
 	Configure::write('database', 'release');
 	Configure::write('fbapi_appid', '184646768373007');
 	Configure::write('fbapi_secret', '5a1ccdca02294c0b26ca1615b56dda83');
+	Configure::write('settlement','https://gw.axes-payment.com/cgi-bin/credit/order.cgi');
 
 }else if($_SERVER["HTTP_HOST"]==="acfjapan1.sakura.ne.jp"){
 
 	Configure::write('database', 'staging');
 	Configure::write('fbapi_appid', '500302520048939');
 	Configure::write('fbapi_secret', '7985cd05a7175cd51fcbe23bd0420607');
+	Configure::write('settlement','http://pjx.sakura.ne.jp/stub/acf_credit.php');
 
 }else{
 	
 	Configure::write('database', 'default');
 	Configure::write('fbapi_appid', '215361505226167');
 	Configure::write('fbapi_secret', '1501be2717029dff06bfe634b97d859f');
+	Configure::write('settlement','http://pjx.sakura.ne.jp/stub/acf_credit.php');
 }

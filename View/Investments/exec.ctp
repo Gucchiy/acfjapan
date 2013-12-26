@@ -1,9 +1,11 @@
 <?php
 	$now_url = $this->Html->url('',true);	
 	$now_base_url = $this->Html->url(array('controller'=>'projects','action'=>'index'), true);
-	$root_url = $this->Html->url("/");
+	$root_url = $this->Html->url("/",true);
+	// print_r($this->data);
 	// echo $now_base_url;
 	// echo $num;
+	// echo $root_url;
 ?>
 
 <!-- Content -->
@@ -65,14 +67,6 @@
 						<?=$project['Project']['donation_text'.$num];?>
 		
 					</div>
-					個数 <select name="amount" id="amount">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>						
-					</select>
-					<div id='total' style="font-size:15px"></div>
 
 
 				</div>
@@ -81,22 +75,60 @@
 				<div class="eleven columns">
 					<div class="row">
 					<?php
-					  // <form id="contact-form" class="form" method="post" action="php/contact.php">
+					if(isset($investment_id)){
+					?>
+						<p>下記内容で購入を受け付けました。よろしければカード決済にお進みください。</p>
+						<form action="<?=$settlement?>" method="post">
+							
+							<P>個数：<?=$this->data['Investment']['amount']?></P>
+							<P>合計：<?=number_format($this->data['Investment']['total'])?>円</P>
+							<p>お届け先:<?=$this->data['Investment']['address']?></p>
+							<div class="button-row">
+								<button type="submit" class="btn">カード決済手続きへ</button>
+							</div>
+							<input type="hidden" name="clientip" value="" />
+							<input type="hidden" name="money" value="<?=$this->data['Investment']['total']?>" />
+							<input type="hidden" name="sendid" value="<?=$investment_id?>" />
+							<input type="hidden" name="success_url" value="<?=$root_url?>investments/paid/<?=$investment_id?>" />
+							<input type="hidden" name="success_str" value="こちらをクリックしてお手続きを完了ください。" />
+							<input type="hidden" name="failure_url" value="<?=$now_url?>" />
+							<input type="hidden" name="failure_str" value="購入予定商品のご確認" />
+							
+						</form>
+						
+						
+					<?php	
+					}else{
+					
 						echo $this->Form->create('Investment', array('class'=>'form'));
 					?>			
 
 						  		
 					<div style="padding:15px; margin-left:30px;" >
+						個数 <select name="data[Investment][amount]" id="amount" style="width:5em;">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>						
+						</select>
+						<div id='total' style="font-size:15px"></div>
+
 						<?php
+							/*
 							echo $this->Form->input('cardnum', array('label'=>'カードの種類','empty'=>'お選び下さい','type'=>'select', 'options'=>array('VISA','MASTER','UC')));
 							echo $this->Form->input('cardname', array('label'=>'カード名義'));
 							echo $this->Form->input('cardnum', array('label'=>'カード番号'));
 							echo $this->Form->input('expdate', array('label'=>'カード有効期限','type'=>'date', 'dateFormat' => 'YM', 'monthNames' => false,'separator' => '/', 'style'=>'width:20%'));
 							echo $this->Form->input('cardpass', array('label'=>'パスワード','type'=>'password'));
+							 * 
+							 */
+							echo "商品をお届けする住所<br />";
+							echo $this->Form->textarea('address', array('style'=>'width:30em;height:5em;'));
 							echo $this->Form->hidden('total');
 						?>
 						<div class="button-row">
-							<button type="submit" class="btn">送信する</button>
+							<button type="submit" class="btn">購入手続きへ</button>
 						</div>
 					<?php
 						echo $this->Form->end();
@@ -119,12 +151,14 @@
 					}
 
 
-					$('select[name="amount"]').change( onSelect );
+					$('select[id="amount"]').change( onSelect );
 					// $('#total').html();
 					onSelect();
 					
 				</script>
-
+				<?php
+				}
+				?>
 
 			</div>
 		</div>
