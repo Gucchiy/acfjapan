@@ -155,6 +155,7 @@ class ProjectsController extends AppController {
 		$this->Entry->recursive = 0;
 		$options = array('conditions'=>array('Entry.project_id'=>$id));
 		$this->set('entries', $this->Entry->find('all', $options));
+		$this->set('project_id',$id);
 	}
 
 	public function ajax_tab3($id){

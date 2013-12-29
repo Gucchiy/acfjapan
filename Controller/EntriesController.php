@@ -13,6 +13,7 @@ class EntriesController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->Entry->recursive = 0;
 		$this->set('entries', $this->paginate());
 	}
@@ -25,6 +26,7 @@ class EntriesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->check_admin();
 		if (!$this->Entry->exists($id)) {
 			throw new NotFoundException(__('Invalid entry'));
 		}
@@ -38,6 +40,7 @@ class EntriesController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->Entry->create();
 			if ($this->Entry->save($this->request->data)) {
@@ -59,6 +62,8 @@ class EntriesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
+
 		if (!$this->Entry->exists($id)) {
 			throw new NotFoundException(__('Invalid entry'));
 		}
@@ -85,6 +90,7 @@ class EntriesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->Entry->id = $id;
 		if (!$this->Entry->exists()) {
 			throw new NotFoundException(__('Invalid entry'));

@@ -13,7 +13,8 @@
 ?>
 <div class="tab-under">
 <?php
-	echo $this->Html->image('button.png', array('url'=>'#'));
+	// echo $this->Html->image('button.png', array('url'=>'#'));
+	echo $this->Html->image('button.png', array('url'=>array('controller'=>'investments', 'action'=>'select',$project_id)));							
 ?>
 </div>
 
