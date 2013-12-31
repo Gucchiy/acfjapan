@@ -107,4 +107,28 @@ class TeamsController extends AppController {
 		$this->Session->setFlash(__('Team was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function ajax_tab1($id){
+		
+		$this->layout = 'ajax';
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+
+	}
+
+	public function ajax_tab2($id){
+		
+		$this->layout = 'ajax';
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+	}
+
+	public function ajax_tab3($id){
+		
+		$this->layout = 'ajax';
+		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
+		$this->set('team', $this->Team->find('first', $options));
+	}
+
+
 }

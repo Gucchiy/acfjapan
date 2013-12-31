@@ -413,5 +413,17 @@ public $uses = array('User','Wait');
 	{
 		
 	}
+	
+	function check_email()
+	{
+		if ($this->request->is('post') || $this->request->is('put')) {
+			$this->check_admin();
+			$email = $this->request->data['Check']['email'];
+			$mail_subject = $this->request->data['Check']['subject'];
+			$mail_message = $this->request->data['Check']['content'];
+				
+			mb_send_mail( $email, $mail_subject, $mail_message, "From: noreply@acfjapan.com ");
+		}
+	}
 
 }
