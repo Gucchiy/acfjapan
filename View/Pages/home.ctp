@@ -94,22 +94,59 @@
 		<div class="content">
 
 			<!-- Highlight -->
-		  <div class="highlight"><div class="container">
+		  <div class="highlight clearfix" style=""><div class="container clearfix" style="overflow: hidden;">
 		  <?php
 		  
 		  		// $disp_num = rand(0, count($projects)-1);
 				// $disp_project = $projects[$disp_num];		  
 		  ?>
+
+		  			<script>
+		  				var dispNewsNum = 0;
+		  				var NewsCount = <?=count($news)?>;
+		  				function OnNewsNext(){
+		  					
+		  					// alert(dispNewsNum);
+		  					$("#new"+dispNewsNum).animate({"left": "-=200%"}, "slow");
+		  					
+		  					dispNewsNum++;
+		  					if( dispNewsNum >= NewsCount ){
+		  						dispNewsNum = 0;
+		  					}
+		  					
+		  					for(var i=0; i < NewsCount; i++ ){
+		  						
+		  						// $("#new"+i).css('display','none');
+		  						$("#new"+i).css('left','200%');
+		  					}
+		  					$("#new"+dispNewsNum).css('display','block');
+		  					$("#new"+dispNewsNum).animate({"left": "0px"}, "slow");
+		  					
+		  				}
+		  				
+		  				
+		  			</script>
 		  	
 		  	
 					<div class="sixteen columns">
-						<div class="highlight-inner">
-							<div class="col-text">
-								<h2 class="headline"><span class="accent">新着情報</span>：NEWS　<?=$news['New']['title']?></h2>
-								<p><?=$news['New']['content']?></p>
-						  </div>
-							<div class="col-btn">
+						<div class="highlight-inner" style="height:100px; overflow: hidden;">
+							<?php
+								$i = 0;
+								$style = "position:absolute;width:95%; padding:0";
+								foreach($news as $new){
+									
+									echo "<div class='col-text clearfix', id='new{$i}' style='{$style}'>\n";
+									echo "<h2 class='headline'><span class='accent'>新着情報</span>：NEWS　{$new['New']['title']}</h2>\n";
+									echo "<p>{$new['New']['content']}</p>\n";
+								  	echo "</div>\n";
+									$style = "position:absolute;left:200%;width:95%;padding:0";
+									$i++;
+								}
+							
+							?>
+							<div class="col-btn" style="width:5%;float:right;">
 								<?php
+									echo $this->Html->image("right-arrow.png",array('style'=>'cursor:pointer;', 'OnClick'=>'OnNewsNext()'));
 									// echo $this->Html->link("このプロジェクトを応援する！", array('controller'=>'projects','action'=>'view',$disp_project['Project']['id']), array('class'=>'btn'));
 								?>
 							</div>
@@ -274,7 +311,7 @@
 						<div class="one-third column portfolio-item photography">
 							<figure class="item-image">
 								<?php
-									echo $this->Html->image("{$report['Report']['image']}");
+									echo $this->Html->image("{$report['Report']['image']}",array('url'=>array('controller'=>'pages','action'=>$report['Report']['file'])));
 								?>
 							</figure>
 						  <div class="item-info clearfix">

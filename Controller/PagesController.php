@@ -85,7 +85,7 @@ class PagesController extends AppController {
 			$this->set('reports',$reports);
 			
 			$this->New->recursive = 0;
-			$news = $this->New->find('first',array('order'=>'modified desc'));
+			$news = $this->New->find('all',array('order'=>'modified desc','limit'=>'3'));
 			$this->set('news',$news);
 				
 		}else if($path[0]=='player'){

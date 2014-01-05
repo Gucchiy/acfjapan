@@ -119,15 +119,18 @@
 						<?php
 							echo $this->Html->image("{$team['Team']['logo']}",array('style'=>'margin-bottom:20px;'));
 						?>						
-
 						
 						<?php
-								echo $this->Html->image('pickup.png')."<br /><br />";
+							echo $this->Html->image('pickup.png',array('style'=>'margin-bottom:10px;'));
+							foreach($reports as $report){
+								
+								echo $this->Html->image($report['Report']['image'],array('url'=>array('controller'=>'pages','action'=> $report['Report']['file'])));
+								echo "<p>{$report['Report']['title']}</p>\n";
+							}	
+								
+								
 						?>
-						<div class="sidebox">
-							
-						</div>
-						
+													
 						
 						<?php
 								echo $this->Html->image('news.png')."<br /><br />";
