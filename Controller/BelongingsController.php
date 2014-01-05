@@ -13,6 +13,7 @@ class BelongingsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->Belonging->recursive = 0;
 		$this->set('belongings', $this->paginate());
 	}
@@ -25,6 +26,7 @@ class BelongingsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->check_admin();
 		if (!$this->Belonging->exists($id)) {
 			throw new NotFoundException(__('Invalid belonging'));
 		}
@@ -38,6 +40,7 @@ class BelongingsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->Belonging->create();
 			if ($this->Belonging->save($this->request->data)) {
@@ -60,6 +63,7 @@ class BelongingsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 		if (!$this->Belonging->exists($id)) {
 			throw new NotFoundException(__('Invalid belonging'));
 		}
@@ -87,6 +91,7 @@ class BelongingsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->Belonging->id = $id;
 		if (!$this->Belonging->exists()) {
 			throw new NotFoundException(__('Invalid belonging'));

@@ -1,3 +1,10 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
+
 <div class="belongings view">
 <h2><?php  echo __('Belonging'); ?></h2>
 	<dl>
@@ -92,5 +99,8 @@
 		<ul>
 			<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		</ul>
+	</div>
+</div>
+
 	</div>
 </div>

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class TeamsController extends AppController {
 
-	public $uses = array('Team','Project', 'User', 'Report');
+	public $uses = array('Team','Project', 'User', 'Report','Belonging');
 
 
 /**
@@ -37,9 +37,12 @@ class TeamsController extends AppController {
 		$options = array('conditions' => array('Team.' . $this->Team->primaryKey => $id));
 		$team = $this->Team->find('first', $options);
 		$reports = $this->Report->find('all', array('conditions'=>array('team_id'=>$id)) );
+		$this->Belonging->recursive = 2;
+		$belongings = $this->Belonging->find('all',array('conditions'=>array('team_id'=>$id)));
+
 		// $users = $this->User->find('all',array('conditions'=>array('')));
 		// belonging で再構築
-		$this->set(compact(array('team','reports')) );
+		$this->set(compact(array('team','reports','belongings')) );
 	}
 
 /**

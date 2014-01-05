@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="belongings form">
 <?php echo $this->Form->create('Belonging'); ?>
 	<fieldset>
@@ -21,4 +27,7 @@
 		<li><?php echo $this->Html->link(__('List Teams'), array('controller' => 'teams', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Team'), array('controller' => 'teams', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

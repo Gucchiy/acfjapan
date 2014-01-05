@@ -106,7 +106,7 @@ div.hidden_total_progress
 	
 }
 
-/* プロジェクトページ */
+/* 右側ペイン */
 
 div#item_info_side
 {
@@ -131,6 +131,34 @@ div#item_info_side div.time
 	font-weight: bold; 
 	margin: 10px 10px 5px 0px;
 }
+
+div#item_info_side img.title
+{
+	margin-bottom:20px;
+}
+
+div#item_info_side div.sidebox img.user
+{
+	width:50px;
+	height: 50px;
+}
+
+div#item_info_side div.sidebox h3
+{
+	font-size:16px;
+	padding:5px;
+	margin:0px;	
+	display: inline;
+}
+
+div#item_info_side div.sidebox h4
+{
+	font-size:8px;
+	padding:5px 2px;
+	margin:0px;
+	font-weight:normal;
+}
+
 
 div.box
 {

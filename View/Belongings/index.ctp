@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="belongings index">
 	<h2><?php echo __('Belongings'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -52,3 +58,8 @@
 		<li><?php echo $this->Html->link(__('New Team'), array('controller' => 'teams', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+	</div>
+</div>
+
+

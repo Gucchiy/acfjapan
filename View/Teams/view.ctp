@@ -117,36 +117,64 @@
 					<div id="item_info_side" class="clearfix">
 						
 						<?php
-							echo $this->Html->image("{$team['Team']['logo']}",array('style'=>'margin-bottom:20px;'));
+							echo $this->Html->image("{$team['Team']['logo']}",array('class'=>'title'));
 						?>						
 						
 						<?php
-							echo $this->Html->image('pickup.png',array('style'=>'margin-bottom:10px;'));
+							echo $this->Html->image('pickup.png',array('class'=>'title'));
 							foreach($reports as $report){
 								
 								echo $this->Html->image($report['Report']['image'],array('url'=>array('controller'=>'pages','action'=> $report['Report']['file'])));
 								echo "<p>{$report['Report']['title']}</p>\n";
 							}	
-								
-								
 						?>
-													
-						
 						<?php
-								echo $this->Html->image('news.png')."<br /><br />";
+							echo $this->Html->image('news.png',array('class'=>'title'));
 						?>						
 						<div class="sidebox">
 							
 						</div>
 						<?php
-								echo $this->Html->image('member.png')."<br /><br />";
-						?>						
-						<div class="sidebox">
-							
-						</div>
+							echo $this->Html->image('member.png',array('class'=>'title'));
+						?>
 						<?php
-								echo $this->Html->image('history.png')."<br /><br />";
-						?>						
+							foreach($belongings as $belonging){
+										
+								echo "<div class='sidebox'>\n";
+								
+								
+								if(strlen($belonging['User']['fbid']>2)){
+									
+									echo $this->Html->image("https://graph.facebook.com/{$belonging['User']['fbid']}/picture",array('class'=>'user'));
+								
+								}else{
+									
+									// ToDo: 画像の default 処理
+									echo $this->Html->image($belonging['User']['image']);
+								}
+								echo "<h3>".$belonging['User']['fbname']."</h3>\n";
+								
+								echo "<h4>現在募集中のプロジェクト</h4>\n";
+								
+								foreach($belonging['User']['Project'] as $project){
+									
+									if($project['status']==1){
+										
+										echo $this->Html->link($project['title'],array('controller'=>'projects','action'=>'view',$project['id']));
+										echo "<br />";
+									}
+									// echo $project['title'];
+								}
+								
+								// print_r($belonging['User']);
+								
+								echo "</div>\n";
+
+							}
+						?>							
+						<?php
+							echo $this->Html->image('history.png',array('class'=>'title'));
+						?>
 						<div class="sidebox">
 						<?php
 							for($i=1; $i<=10; $i++ ){
