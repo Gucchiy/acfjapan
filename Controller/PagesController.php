@@ -88,7 +88,7 @@ class PagesController extends AppController {
 			$news = $this->New->find('all',array('order'=>'modified desc','limit'=>'3'));
 			$this->set('news',$news);
 				
-		}else if($path[0]=='player'){
+		}else if($path[0]=='recommender'){
 
 			$this->Project->recursive = 0;
 			$options = array('status'=>'1', 'type'=>'2');

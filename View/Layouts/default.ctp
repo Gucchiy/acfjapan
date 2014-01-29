@@ -201,7 +201,7 @@ $root_url = $this->Html->url('/',true);
 								</li>
 								<li>
 									<?php
-										echo $this->Html->link('参加する', array('controller'=>'pages','action'=>'player'));
+										echo $this->Html->link('推薦する', array('controller'=>'pages','action'=>'recommender'));
 									?>
 								</li>
 								<li>
@@ -265,7 +265,7 @@ $root_url = $this->Html->url('/',true);
 							</li>
 							<li>
 							<?php
-								echo $this->Html->link('参加する',array('controller'=>'pages','action'=>'player'));
+								echo $this->Html->link('推薦する',array('controller'=>'pages','action'=>'recommender'));
 							?>
 							</li>
 							<li>

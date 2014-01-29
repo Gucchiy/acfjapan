@@ -51,7 +51,7 @@
 						<?php
 							echo $this->Html->image('privilege.png');
 						?>
-						こちらの商品の購入を完了しました。ご購入ありがとうございます。
+						こちらの商品の購入処理を完了しました。ご購入ありがとうございます。
 					</h3>
 					<?php
 						// $url = $root_url."investments/exec/".$project['Project']['id']."/".$i;

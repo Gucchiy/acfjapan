@@ -86,13 +86,13 @@
 							<div class="button-row">
 								<button type="submit" class="btn">カード決済手続きへ</button>
 							</div>
-							<input type="hidden" name="clientip" value="" />
+							<input type="hidden" name="clientip" value="1011003469" />
 							<input type="hidden" name="money" value="<?=$this->data['Investment']['total']?>" />
 							<input type="hidden" name="sendid" value="<?=$investment_id?>" />
 							<input type="hidden" name="success_url" value="<?=$root_url?>investments/paid/<?=$investment_id?>" />
-							<input type="hidden" name="success_str" value="こちらをクリックしてお手続きを完了ください。" />
+							<input type="hidden" name="success_str" value="Back to ACF Japan" />
 							<input type="hidden" name="failure_url" value="<?=$now_url?>" />
-							<input type="hidden" name="failure_str" value="購入予定商品のご確認" />
+							<input type="hidden" name="failure_str" value="Back to ACF Japan"/>
 							
 						</form>
 						

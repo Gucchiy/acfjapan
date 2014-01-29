@@ -46,8 +46,9 @@
 
 					<div class="user_info clearfix" style="clear:both">
 						
-						<div class="planner">代表者</div>
-						
+						<?php
+							// <div class="planner">代表者</div>
+						?>
 						<div class="face">
 							<?php
 								if(strlen($team['User']['fbid']>2)){

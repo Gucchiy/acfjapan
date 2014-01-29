@@ -19,11 +19,11 @@
 				<div class="container">
 					<div class="sixteen columns">
 						<h1 class="page-title">
-							PLAYER
+							RECOMMENDER
 						</h1>
 						<ul class="breadcrumb">
 							<li><a href="<?=$root_url?>">TOP</a> <span class="divider">&raquo;</span></li>
-							<li class="active">PLAYER</li>
+							<li class="active">RECOMMENDER</li>
 						</ul>
 					</div>
 				</div>
@@ -41,16 +41,15 @@
 					
 				
 									<h2 class="title">
-							<span>参加する</span>
+							<span>推薦する</span>
 						</h2>
 						
 			　　　　　　<div class="callout block">
 							<div class="callout-inner">
 								<div class="col-text">
-									<h3 class="headline">参加する（プレイヤーの皆さまへ）</h3><br>
-									<p>貴方は「プレイヤー」として、こうしたプロジェクトに「参加」し、現地交流ができます。スタディツアー/ボランティア活動としてプロジェクトが行われる現地へ直接参加し、現地交流を通じて理解を深めることができます。プロジェクトページ毎にスタディツアー専用の交流掲示板がございますので、プランナーと共に皆様で交流してください。ボランティア体験や現地の人々との触れ合いを含んだスタディツアーは、きっとあなたの人生を豊かにするでしょう！
-
-
+									<h3 class="headline">推薦者の皆さまへ</h3><br>
+									<p>
+社会貢献活動を行っている方々や、そのような活動にご興味を持っている方々を推薦することによって、企画者の方々がACF JAPANのサイト上でプロジェクトを立ち上げることができ、全員で応援することができます。一人ではプロジェクトを立ち上げる自信がない方でも、友達や知り合いの方々と一緒にプロジェクトを立ち上げ、成功に導きましょう！
 </p>
 								</div>
 								
@@ -67,10 +66,10 @@
 										echo $this->Html->image('player01.png');
 										// <i class="icon-lightbulb"></i>
 									?>
-									<span>スタディツアー</span>
+									<span></span>
 								</div>
 								<div class="description">
-							<h3 class="headline">・どうやって参加するの？</h3>各参加型のプロジェクトページにおいて、プランナー（企画者）や他のプレイヤー（参加者）と交流しながら、日程・予算・持ち物・観光場所などを決定していきます。
+							<h3 class="headline">・どうやって推薦するの？</h3>このページの最下部にある、「推薦する」ボタンを押して頂き、所定の項目欄にご記入ください。企画者にも、推薦者からの推薦があった旨の連絡が届きます。
 
 								</div>
 							</div>
@@ -82,10 +81,10 @@
 									?>
                                 
 									
-									<span>予算</span>
+									<span></span>
 								</div>
 								<div class="description">
-									<h3 class="headline">・どれくらいの費用がかかるの？</h3>ある程度大人数で行くため、普通の旅行代金より若干お安くなります。また、海外だと5,000円、国内だと3,000円がプランナーに寄付され、相当の特典ももらえます！
+									<h3 class="headline">・推薦されたらどうすればいいの？</h3>推薦者からの推薦後、企画者にはプロジェクト投稿用画面への案内状が届きます。プロジェクト投稿後、推薦者・企画者の両者の情報がプロジェクトページに掲載されます。
 
 								</div>
 							</div>
@@ -96,10 +95,10 @@
 										// <i class="icon-lightbulb"></i>
 									?>
 									
-									<span>実行の有無</span>
+									<span></span>
 								</div>
 								<div class="description">
-									<h3 class="headline">・プロジェクトが成立しなかった場合はどうなるの？</h3>残念ながら、プロジェクトの成否はプランナーの判断によるため、成立しなかった場合はスタディーツアーも中止となります。パートナー・プレイヤー・プランナーの全員が一丸となってプロジェクトの成功を目指しましょう！
+									<h3 class="headline">・誰を推薦してもいいの？</h3>推薦者の知り合いの方に限定させて頂いております。また、プロジェクト投稿用の案内状をお送りしているので、企画者のメールアドレスをご記入ください。
 								</div>
 							</div>
 							

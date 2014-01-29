@@ -220,18 +220,18 @@ div.container.main div.user_info
 
 div.container.main div.user_info div.face
 {
-	width:86px;
-	height:86px;
+	width:50px;
+	height:50px;
 	background-color:#F08337;
-	padding:7px;
+	padding:25px;
 	margin:0px;
 	float:left;
 }
 
 div.container.main div.user_info div.face img
 {
-	width:86px;
-	height:86px;
+	width:50px;
+	height:50px;
 	margin:0px;
 	padding:0px;
 }

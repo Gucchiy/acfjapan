@@ -13,6 +13,7 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->check_admin();
 		$this->Report->recursive = 0;
 		$this->set('reports', $this->paginate());
 	}
@@ -25,6 +26,7 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->check_admin();
 		if (!$this->Report->exists($id)) {
 			throw new NotFoundException(__('Invalid report'));
 		}
@@ -38,6 +40,7 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->check_admin();
 		if ($this->request->is('post')) {
 			$this->Report->create();
 			if ($this->Report->save($this->request->data)) {
@@ -60,6 +63,7 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->check_admin();
 		if (!$this->Report->exists($id)) {
 			throw new NotFoundException(__('Invalid report'));
 		}
@@ -87,6 +91,7 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->check_admin();
 		$this->Report->id = $id;
 		if (!$this->Report->exists()) {
 			throw new NotFoundException(__('Invalid report'));

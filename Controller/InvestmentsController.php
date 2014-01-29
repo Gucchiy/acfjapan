@@ -163,10 +163,14 @@ class InvestmentsController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 
 			// print_r($this->request->data);
+			// echo 'test';
 			$this->Investment->create();
 			$this->request->data['Investment']['project_id'] = $id;
 			$this->request->data['Investment']['user_id'] = $this->user_id;
 			$this->request->data['Investment']['num'] = $num;
+			// echo 'tst2';
+			// print_r($this->request->data);
+			
 			$this->Investment->save($this->request->data);
 			$this->set('investment_id',$this->Investment->getID());
 			$this->set('values',$this->request->data);
@@ -198,23 +202,62 @@ class InvestmentsController extends AppController {
 			
 			$url = Router::url('/users/login',true).'?back_url='.urlencode( Router::url('',true) );
 			// echo Router::url('',true);
-			$this->Session->setFlash('お支払を完了するためにはログインしてください。ログイン作業後にお支払完了に進みます。');
+			$this->Session->setFlash('ログインして購入をご確認ください。');
 			
 			$this->redirect($url);
 
 		}
 
-		$this->Project->recursive = 3;
+		if(!$this->Investment->exists($id)){
+
+			$this->Session->setFlash('該当の商品が見つかりませんでした。');			
+			$this->redirect(array('controller'=>'pages','view'=>'home'));
+			
+			return;
+		}
+
 		$options = array('conditions' => array('Investment.' . $this->Investment->primaryKey => $id));
 		$investment = $this->Investment->find('first', $options);
-		
+					
 		$this->set('investment',$investment);
-
-		// echo $this->Investment->primaryKey;
-		
-		$update = array($this->Investment->primaryKey => $id, 'state'=>1);
-		$this->Investment->save($update);
 	
 	}
+	
+	public function callback(){
 
+		$this->layout = 'ajax';
+		
+		// get パラメータで、カード会社からコールバックがある
+		print_r($this->params['url']);
+		
+		if(!isset($this->params['url']['sendid'])){
+			return;
+		}
+		$id = $this->params['url']['sendid'];
+		
+		if(!$this->Investment->exists($id)){
+			
+			$this->set('message','NG:該当の商品が見つかりませんでした。');
+			// TODO: エラー処理を将来追加するべきか？
+			return;
+		}
+		
+		if($this->params['url']['result']==='ok'){
+
+			$options = array('conditions' => array('Investment.' . $this->Investment->primaryKey => $id));
+			$investment = $this->Investment->find('first', $options);
+						
+			$this->set('investment',$investment);
+	
+			$update = array($this->Investment->primaryKey => $id, 'state'=>1);
+			$this->Investment->save($update);
+			$this->set('message','OK:購入処理の完了');
+
+		}else{
+			
+			$this->Investment->delete($id);
+			$this->set('message','OK:キャンセル処理の完了');
+		}
+		
+	}
 }
