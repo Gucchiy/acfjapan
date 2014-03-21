@@ -157,6 +157,37 @@ public $uses = array('User','Wait');
 	}
 
 /**
+ * admin_add method
+ *
+ * @return void
+ */
+	public function admin_add() {
+		$this->check_admin();
+		if ($this->request->is('post')) {
+
+			// email が登録済み
+			if( $this->User->find('count',array('conditions'=>array('email'=>$this->data['User']['email']))) >= 1 ){
+
+				$this->Session->setFlash(__('すでに登録済みの e-mailです。'));
+				// $this->redirect(array('action' => 'admin_add'));
+
+				return;
+			}
+
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		}
+		$belongings = $this->User->Belonging->find('list');
+		$this->set(compact('belongings'));
+	}
+
+
+/**
  * edit method
  *
  * @throws NotFoundException

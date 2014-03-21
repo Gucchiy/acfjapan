@@ -1,3 +1,9 @@
+<!-- Content -->
+<div class="content">
+
+	<!-- Start Content -->
+	<div class="container main">
+
 <div class="investments index">
 	<h2><?php echo __('Investments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -55,4 +61,7 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+	</div>
 </div>

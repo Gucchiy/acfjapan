@@ -22,7 +22,10 @@
 		echo $this->Form->input('team_tel');
 		echo $this->Form->input('team_fax');
 		echo $this->Form->input('team_email');
-		echo $this->Form->input('team_establish');
+//		echo $this->Form->input('team_establish');
+		echo $this->Form->input('team_establish', array(
+		    'minYear' => date('Y') - 100,
+		    'maxYear' => date('Y')  ));
 		echo $this->Form->input('team_representation');
 		echo $this->Form->input('team_role');
 		echo $this->Form->input('team_value');
